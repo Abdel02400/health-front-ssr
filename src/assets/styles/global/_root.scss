@@ -1,0 +1,30 @@
+@use '../variables/spacing-shape' as *;
+
+:root {
+    --container-padding: 20px;
+    --container-width: calc(100vw - var(--container-padding) * 2);
+    --space: 8px;
+    --border-radius: 8px;
+    --large-breakpoint: #{$large-breakpoint};
+    --medium-breakpoint: #{$medium-breakpoint};
+    --small-breakpoint: #{$small-breakpoint};
+    --very-small-breakpoint: #{$small-breakpoint};
+
+    --background: #FFF;
+    --background-tonic: #7C3AED19;
+    --background-modal: #0000007F;
+    --background-skeleton: #E0E0E0;
+
+    --header-box-shadow: 0 16px 32px -16px rgba(0, 0, 0, .1), 0 0 0 1px rgba(0, 0, 0, .1);
+    --separator-border: 1px solid #E6E8EA;
+
+    --tonic: #7C3AED;
+    --text-secondary: #77808D;
+    --text-dark: #000;
+
+    --modal-animation: .2s;
+
+    @media only screen and (min-width: $large-breakpoint) {
+        --container-width: 1160px;
+    }
+}

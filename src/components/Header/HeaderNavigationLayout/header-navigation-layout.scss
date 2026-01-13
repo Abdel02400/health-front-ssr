@@ -1,0 +1,39 @@
+@use 'functions/spacing' as *;
+@use 'mixins/typography' as *;
+@use 'variables/typography' as *;
+
+.header-navigation-layout {
+    width: 100%;
+    display: flex;
+    gap: space(4);
+
+    .header-navigation-layout__logo {
+        display: flex;
+        width: 150px;
+    }
+
+    .header-navigation-layout__items {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: space(4);
+
+        .header-navigation-layout__item {
+            @include typography(link);
+            padding: space(1) space(2);
+            transition: color .2s ease-in-out;
+
+            &.active {
+                font-weight: $font-weight-bold;
+                background-color: var(--background-tonic);
+                color: var(--tonic);
+                border-radius: var(--border-radius);
+            }
+
+            &:hover:not(.active) {
+                color: var(--text-dark);
+            }
+        }
+    }
+}

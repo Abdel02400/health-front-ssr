@@ -1,0 +1,21 @@
+@use '../variables/typography' as *;
+
+@mixin default {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+}
+
+@mixin link {
+    display: flex;
+    font-family: $font-base;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+}
+
+@mixin typography($type) {
+    @if $type == 'default' {
+        @include default;
+    } @else if $type == 'link' {
+        @include link;
+    }
+}

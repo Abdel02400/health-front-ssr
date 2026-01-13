@@ -1,0 +1,22 @@
+@use 'functions/spacing' as *;
+@use 'mixins/animation' as *;
+@use 'variables/sizes' as *;
+
+.header-actions-skeleton {
+    display: flex;
+    gap: space(2);
+
+    .header-actions-skeleton__button,
+    .header-actions-skeleton__icon {
+        height: $button-height;
+        @include animation(skeleton);
+    }
+
+    .header-actions-skeleton__button {
+        width: 100px;
+    }
+
+    .header-actions-skeleton__icon {
+        width: 50px;
+    }
+}

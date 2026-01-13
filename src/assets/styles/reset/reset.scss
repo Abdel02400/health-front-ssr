@@ -1,0 +1,61 @@
+@use '_reset-ext';
+
+[type='radio'] + label {
+  margin: 0;
+}
+
+input[type='text'], input[type='tel'], input[type='email'], input[type='password'] {
+  box-shadow: none;
+  background: none;
+  margin: 0;
+  border: none;
+  padding: 0;
+
+  &:focus {
+    box-shadow: none;
+    border: none;
+    background: none;
+  }
+}
+
+input[disabled='disabled'] {
+  background: none
+}
+
+input[readonly='readonly'] {
+  background: none
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input[type='radio'] {
+  margin-bottom: 0;
+}
+
+input[type='checkbox'], input.checkbox {
+  margin: 0;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,17 @@
+@use '../mixins/typography' as *;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  user-select: none;
+  outline: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  @include typography(default);
+}
