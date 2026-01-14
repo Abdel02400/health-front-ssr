@@ -26,7 +26,7 @@
       align-items: center;
       gap: space(2);
       padding: space(2);
-      border-bottom: var(--separator-border);
+      border-bottom: var(--border-grey);
 
       @media only screen and (min-width: $small-breakpoint) {
           justify-content: center;

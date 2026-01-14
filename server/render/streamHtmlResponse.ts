@@ -1,5 +1,6 @@
 import { Transform } from 'node:stream';
 import { ENV } from '@server-config/env';
+import { createImagePreloads } from '@server-ssr/imagePreloads';
 import type { StreamHtmlResponseFunction } from '@server-types/render';
 
 const STREAM_END_MARKER = '<vite-streaming-end></vite-streaming-end>';
@@ -11,11 +12,10 @@ export const streamHtmlResponse: StreamHtmlResponseFunction = ({ res, stream, te
     res.status(didErrorRef.value ? 500 : 200);
     res.set({ 'Content-Type': 'text/html' });
 
-    let htmlEnded = false;
-    let headHtml = createHeadHtml(nonce);
-    if (devStyles) headHtml += devStyles;
-
+    const imagePreloads = createImagePreloads(nonce);
+    const headHtml = createHeadHtml(nonce, imagePreloads, devStyles);
     const [htmlStart, htmlEnd] = template.replace('<!--app-head-->', headHtml).split('<!--app-html-->');
+    let htmlEnded = false;
 
     const transformStream = new Transform({
         transform(chunk, encoding, callback) {

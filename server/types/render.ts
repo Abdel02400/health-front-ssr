@@ -1,21 +1,34 @@
 import type { Request, Response } from 'express';
-import type { ViteDevServer } from 'vite';
+import type { ViteDevServer, ModuleNode } from 'vite';
 import type { DataRouter, StaticHandlerContext } from 'react-router';
 import type { PipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
 import type { ServerRuntime } from '@server-types/serverRuntime';
 import type { CreateSSRRouterFunction } from '@shared-types/router';
 import type { SSRStore } from '@shared-types/store';
+import type { CreateHeadHtmlFunction } from '@shared-ssr/head/createHeadHtml';
 
 type EntryServerModule = { entryServer: EntryServerType; };
-type CreateHeadHtml = (nonce: string) => string;
 type StreamHtmlResponseOptions = {
     res: Response;
     stream: PipeableStream;
     template: string;
-    createHeadHtml: CreateHeadHtml;
+    createHeadHtml: CreateHeadHtmlFunction;
     didErrorRef: { value: boolean };
     devStyles?: string;
 };
+
+export type CollectCssModulesFunction = (
+    entryModule: ModuleNode | undefined,
+    visited?: Set<string>,
+    cssModulePaths?: string[]
+) => string[];
+
+export type CollectCssContentsFunction = (
+    vite: ViteDevServer,
+    cssModulePaths: string[]
+) => Promise<string[]>;
+
+export type CollectDevStylesFunction = (vite: ViteDevServer) => Promise<string>;
 
 export type RenderFunction = (
     router: DataRouter,
@@ -26,7 +39,7 @@ export type RenderFunction = (
 export type AssertEntryServerModuleFunction = (mod: unknown) => asserts mod is EntryServerModule;
 export type EntryServerType = {
     render: RenderFunction;
-    createHeadHtml: CreateHeadHtml;
+    createHeadHtml: CreateHeadHtmlFunction;
     createSSRRouter: CreateSSRRouterFunction;
     devStyles?: string;
 };

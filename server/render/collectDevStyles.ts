@@ -1,39 +1,50 @@
-import type { ViteDevServer, ModuleNode } from 'vite';
+import { normalizePath } from 'vite';
 import { ENTRY_SERVER_PATH, PROJECT_ROOT } from '@server-config/paths';
 import { DEV_STYLES_ID } from '@shared-constants/ssr';
+import type { 
+    CollectCssModulesFunction,
+    CollectCssContentsFunction,
+    CollectDevStylesFunction
+} from '@server-types/render';
 
-export async function collectDevStyles(vite: ViteDevServer): Promise<string> {
-    const moduleId = ENTRY_SERVER_PATH.replace(/\\/g, '/');
-    const entryModule = vite.moduleGraph.getModuleById(moduleId);
+const collectCssModules: CollectCssModulesFunction = (
+    entryModule,
+    visited = new Set<string>(),
+    cssModulePaths = []
+) => {
+    if (!entryModule || !entryModule.id || visited.has(entryModule.id)) return cssModulePaths;
 
-    const cssModulePaths: string[] = [];
-    const visited = new Set<string>();
+    visited.add(entryModule.id);
 
-    function collectCssModules(mod: ModuleNode | undefined) {
-        if (!mod || visited.has(mod.id || '')) return;
-        visited.add(mod.id || '');
+    if (entryModule.id.endsWith('.scss')) cssModulePaths.push(entryModule.id);
 
-        if (mod.id?.match(/\.(scss)$/)) {
-            cssModulePaths.push(mod.id);
-        }
-
-        for (const imported of mod.importedModules) {
-            collectCssModules(imported);
-        }
+    for (const importedModule of entryModule.importedModules) {
+        collectCssModules(importedModule, visited, cssModulePaths);
     }
 
-    collectCssModules(entryModule);
+    return cssModulePaths;
+};
 
-    const cssContents: string[] = [];
-    const projectRoot = PROJECT_ROOT.replace(/\\/g, '/');
+const collectCssContents: CollectCssContentsFunction = async (vite, cssModulePaths) => {
+    const projectRoot = normalizePath(PROJECT_ROOT);
+    const contents = [];
 
     for (const cssPath of cssModulePaths) {
-        const urlPath = cssPath.replace(projectRoot, '') + '?direct';
+        const urlPath = normalizePath(cssPath).replace(projectRoot, '') + '?direct';
         const result = await vite.transformRequest(urlPath);
-        if (result?.code) {
-            cssContents.push(result.code);
-        }
+
+        if (result?.code) contents.push(result.code);
     }
 
-    return cssContents.length > 0 ? `<style id="${DEV_STYLES_ID}">${cssContents.join('\n')}</style>` : '';
-}
+    return contents;
+};
+
+export const collectDevStyles: CollectDevStylesFunction = async (vite) => {
+    const moduleId = normalizePath(ENTRY_SERVER_PATH);
+    const entryModule = vite.moduleGraph.getModuleById(moduleId);
+    const cssModulePaths = collectCssModules(entryModule);
+    const cssContents = await collectCssContents(vite, cssModulePaths);
+
+    if (cssContents.length === 0) return '';
+    return `<style id="${DEV_STYLES_ID}">${cssContents.join('\n')}</style>`;
+};

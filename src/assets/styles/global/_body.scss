@@ -1,17 +1,18 @@
-@use '../mixins/typography' as *;
+@use 'mixins/typography' as *;
 
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: var(--background);
-  user-select: none;
-  outline: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  -ms-touch-action: manipulation;
-  @include typography(default);
+    background-image: var(--background-image);
+    background-color: var(--background);
+    background-size: 20px 20px, 20px 20px;
+    user-select: none;
+    outline: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -ms-touch-action: manipulation;
 }

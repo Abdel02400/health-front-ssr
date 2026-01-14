@@ -1,0 +1,10 @@
+@use 'mixins/typography' as *;
+
+.title {
+    width: fit-content;
+    background: var(--background-linear);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @include typography(title);
+}

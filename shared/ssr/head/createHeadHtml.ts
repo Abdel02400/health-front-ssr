@@ -1,5 +1,12 @@
 import { createCriticalStyles } from '@shared-ssr/head/createSSRStyles';
 
-export const createHeadHtml = (nonce: string) => {
-    return [createCriticalStyles(nonce)].join('\n');
+export type CreateHeadHtmlFunction = (nonce: string, imagePreloads?: string, devStyles?: string) => string;
+
+export const createHeadHtml: CreateHeadHtmlFunction = (nonce, imagePreloads, devStyles) => {
+    const parts = [createCriticalStyles(nonce)];
+
+    if (imagePreloads) parts.push(imagePreloads);
+    if (devStyles) parts.push(devStyles);
+
+    return parts.join('\n');
 };

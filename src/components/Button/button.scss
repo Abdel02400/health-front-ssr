@@ -1,0 +1,35 @@
+@use 'functions/spacing' as *;
+@use 'mixins/typography' as *;
+@use 'variables/sizes' as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: space(2);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    padding: space(1) space(2);
+    outline: none;
+    width: max-content;
+    height: $button-height;
+    transition: all .3s;
+    @include typography(button);
+
+    &.primary {
+        background-color: var(--tonic);
+
+        &:hover {
+            background-color: var(--tonic-dark);
+        }
+    }
+
+    &.secondary {
+        color: var(--text-secondary);
+        border: var(--border-grey);
+
+        &:hover {
+            background-color: var(--tonic-light);
+        }
+    }
+}

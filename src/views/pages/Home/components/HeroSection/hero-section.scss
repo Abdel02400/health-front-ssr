@@ -1,0 +1,51 @@
+@use 'functions/spacing' as *;
+@use 'mixins/typography' as *;
+@use 'variables/spacing-shape' as *;
+
+.hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: space(2);
+    gap: space(4);
+
+    @media only screen and (min-width: $medium-breakpoint) {
+        padding: space(8);
+    }
+
+    .hero-section__dashboard-preview {
+        flex: 2;
+        align-self: center;
+        object-fit: cover;
+        min-width: 250px;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+
+    .hero-section__content {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        gap: space(4);
+
+        .hero-section__content-subscrtiption,
+        .hero-section__content-descriptions {
+            @include typography(paragraph);
+        }
+
+        .hero-section__content-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: space(2);
+
+            .button {
+                flex: 1 1 auto;
+                min-width: 200px;
+            }
+        }
+    }
+}

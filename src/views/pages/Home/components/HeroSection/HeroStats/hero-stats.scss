@@ -1,0 +1,38 @@
+@use 'functions/spacing' as *;
+@use 'mixins/typography' as *;
+
+.hero-stats {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: space(2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+
+    .hero-stats_items {
+        display: flex;
+        flex-direction: column;
+        gap: space(1);
+        padding: 0 space(4);
+        position: relative;
+
+        &:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 70%;
+            background-color: var(--grey);
+        }
+
+        .counter-animation {
+            @include typography(counter);
+        }
+
+        .hero-stats_item-label {
+            @include typography(paragraph);
+        }
+    }
+}

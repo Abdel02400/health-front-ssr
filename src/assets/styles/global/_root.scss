@@ -1,4 +1,4 @@
-@use '../variables/spacing-shape' as *;
+@use 'variables/spacing-shape' as *;
 
 :root {
     --container-padding: 20px;
@@ -14,12 +14,22 @@
     --background-tonic: #7C3AED19;
     --background-modal: #0000007F;
     --background-skeleton: #E0E0E0;
+    --background-linear: linear-gradient(90deg, var(--tonic) 0%,var(--pink) 50%, var(--orange) 100%);
+    --background-image: linear-gradient(to right, rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(236, 72, 153, 0.04) 1px, transparent 1px);
 
     --header-box-shadow: 0 16px 32px -16px rgba(0, 0, 0, .1), 0 0 0 1px rgba(0, 0, 0, .1);
-    --separator-border: 1px solid #E6E8EA;
+    --box-shadow: 0px 0.8px 2px rgba(0, 0, 0, .032), 0px 2.7px 6.7px rgba(0, 0, 0, .048), 0px 12px 30px rgba(0, 0, 0, .08);
+    --border-grey: 1px solid var(--grey);
 
     --tonic: #7C3AED;
+    --tonic-light: #7C3AED23;
+    --tonic-dark: #6430BD;
+    --pink: #EC4899;
+    --orange: #F97316;
+    --grey: #E6E8EA;
     --text-secondary: #77808D;
+    --text-light: #FFF;
     --text-dark: #000;
 
     --modal-animation: .2s;

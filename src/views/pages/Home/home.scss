@@ -1,0 +1,6 @@
+@use 'functions/spacing' as *;
+
+.home {
+    padding-top: space(6);
+    padding-bottom: space(6);
+}

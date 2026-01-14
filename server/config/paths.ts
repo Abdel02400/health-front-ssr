@@ -13,6 +13,7 @@ export const INDEX_HTML_FILENAME = 'index.html';
 export const CLIENT_DIST_PATH = path.resolve(DIST_PATH, 'client');
 export const CLIENT_INDEX_HTML_PATH = path.resolve(CLIENT_DIST_PATH, INDEX_HTML_FILENAME);
 export const CLIENT_DIST_ASSETS_PATH = path.resolve(CLIENT_DIST_PATH, 'assets');
+export const CLIENT_MANIFEST_PATH = path.resolve(CLIENT_DIST_PATH, '.vite', 'manifest.json');
 
 // ---- Server SSR (build)
 export const SERVER_DIST_PATH = path.resolve(DIST_PATH, 'server');

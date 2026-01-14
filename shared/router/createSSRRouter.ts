@@ -7,9 +7,7 @@ const handler = createStaticHandler(routes);
 export const createSSRRouter: CreateSSRRouterFunction = async (request: Request) => {
     const context = await handler.query(request);
 
-    if (context instanceof Response) {
-        return { type: ROUTER_RESULT.RESPONSE, response: context };
-    }
+    if (context instanceof Response) return { type: ROUTER_RESULT.RESPONSE, response: context };
 
     return {
         type: ROUTER_RESULT.ROUTER,
