@@ -1,4 +1,4 @@
-export const initializeRenderState = () => {
+export const initializeRenderState = async () => {
     requestAnimationFrame(() => {
         if (import.meta.env.DEV) document.querySelector('[data-dev-fouc]')?.remove();
         requestAnimationFrame(() => {
