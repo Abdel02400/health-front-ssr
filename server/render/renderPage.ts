@@ -9,7 +9,7 @@ import type { RenderPageFunction } from '@server-types/render';
 
 export const renderPage: RenderPageFunction = async (req, res, runtime) => {
     const webRequest = createWebRequest(req);
-    const { render, createHeadHtml, createSSRRouter, devStyles } = await loadEntryServer(runtime.vite);
+    const { render, createHeadHtml, createSSRRouter } = await loadEntryServer(runtime.vite);
 
     const result = await createSSRRouter(webRequest);
     if (result.type === ROUTER_RESULT.RESPONSE) {
@@ -28,8 +28,7 @@ export const renderPage: RenderPageFunction = async (req, res, runtime) => {
                 stream,
                 template,
                 createHeadHtml,
-                didErrorRef: { value: didError },
-                devStyles
+                didErrorRef: { value: didError }
             });
         },
         onShellError() {

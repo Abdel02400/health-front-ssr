@@ -1,12 +1,14 @@
-import { createCriticalStyles } from '@shared-ssr/head/createSSRStyles';
+import { injectCriticalStyle } from '@shared-ssr/head/injectCriticalStyle';
+import { injectDevFoucStyle } from './injectDevFoucStyle';
+import { ENV } from '@server-config/env';
 
-export type CreateHeadHtmlFunction = (nonce: string, imagePreloads?: string, devStyles?: string) => string;
+export type CreateHeadHtmlFunction = (nonce: string, imagePreloads?: string) => string;
 
-export const createHeadHtml: CreateHeadHtmlFunction = (nonce, imagePreloads, devStyles) => {
-    const parts = [createCriticalStyles(nonce)];
+export const createHeadHtml: CreateHeadHtmlFunction = (nonce, imagePreloads) => {
+    const parts = [injectCriticalStyle(nonce)];
 
+    if (!ENV.isProduction) parts.push(injectDevFoucStyle(nonce));
     if (imagePreloads) parts.push(imagePreloads);
-    if (devStyles) parts.push(devStyles);
 
     return parts.join('\n');
 };

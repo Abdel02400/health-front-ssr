@@ -1,8 +1,8 @@
 @use 'functions/spacing' as *;
+@use 'mixins/flex' as *;
 
 .header {
-    display: flex;
-    align-items: center;
+    @include flex(flex-start, center);
     gap: space(2);
     padding-top: space(2);
     padding-bottom: space(2);

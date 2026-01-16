@@ -1,22 +1,23 @@
 @use 'functions/spacing' as *;
 @use 'mixins/typography' as *;
+@use 'mixins/flex' as *;
 @use 'variables/spacing-shape' as *;
 
 .hero-section {
-    display: flex;
-    flex-wrap: wrap;
     background-color: var(--background);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     padding: space(2);
     gap: space(4);
+    @include flex(flex-start, stretch, column);
 
     @media only screen and (min-width: $medium-breakpoint) {
         padding: space(8);
+        @include flex();
     }
 
     .hero-section__dashboard-preview {
-        flex: 2;
+        flex: 3;
         align-self: center;
         object-fit: cover;
         min-width: 250px;
@@ -27,10 +28,9 @@
     }
 
     .hero-section__content {
-        flex: 3;
-        display: flex;
-        flex-direction: column;
+        flex: 4;
         gap: space(4);
+        @include flex(flex-start, stretch, column);
 
         .hero-section__content-subscrtiption,
         .hero-section__content-descriptions {
@@ -38,13 +38,11 @@
         }
 
         .hero-section__content-actions {
-            display: flex;
-            flex-wrap: wrap;
             gap: space(2);
+            @include flex(space-beetwen, stretch, column);
 
-            .button {
-                flex: 1 1 auto;
-                min-width: 200px;
+            @media only screen and (min-width: $medium-breakpoint) {
+                @include flex(space-beetwen);
             }
         }
     }

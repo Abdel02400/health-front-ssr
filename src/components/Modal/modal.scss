@@ -1,5 +1,6 @@
 @use 'variables/spacing-shape' as *;
 @use 'functions/spacing' as *;
+@use 'mixins/flex' as *;
 
 .modal {
   position: fixed;
@@ -7,26 +8,21 @@
   background-color: var(--background-modal);
   animation: fadein var(--modal-animation) ease-in-out;
   z-index: 20;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
 
   .modal__block {
     max-height: 95vh;
     position: relative;
     background-color: var(--background);
     border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: column;
     animation: fadein-block var(--modal-animation) ease-in-out;
+    @include flex(flex-start, stretch, column);
 
     .modal__block-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       gap: space(2);
       padding: space(2);
       border-bottom: var(--border-grey);
+      @include flex(space-beetwen, center);
 
       @media only screen and (min-width: $small-breakpoint) {
           justify-content: center;

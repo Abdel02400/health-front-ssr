@@ -1,9 +1,13 @@
-@use 'mixins/typography' as *;
-
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html:not(.ready) *,
+html:not(.ready) *::before,
+html:not(.ready) *::after {
+  transition: none !important;
 }
 
 body {

@@ -1,5 +1,6 @@
 @use 'variables/typography' as *;
 @use 'variables/sizes' as *;
+@use 'variables/spacing-shape' as *;
 
 @mixin default {
     font-family: $font-base;
@@ -15,8 +16,12 @@
 @mixin title {
     font-family: $font-base;
     font-weight: $font-weight-bold;
-    font-size: $title-text-size;
+    font-size: $title-text-mobile-size;
     line-height: 1.3;
+
+    @media only screen and (min-width: $medium-breakpoint) {
+        font-size: $title-text-size;
+    }
 }
 
 @mixin paragraph {

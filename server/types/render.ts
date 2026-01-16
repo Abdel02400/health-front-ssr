@@ -14,7 +14,6 @@ type StreamHtmlResponseOptions = {
     template: string;
     createHeadHtml: CreateHeadHtmlFunction;
     didErrorRef: { value: boolean };
-    devStyles?: string;
 };
 
 export type CollectCssModulesFunction = (
@@ -28,8 +27,6 @@ export type CollectCssContentsFunction = (
     cssModulePaths: string[]
 ) => Promise<string[]>;
 
-export type CollectDevStylesFunction = (vite: ViteDevServer) => Promise<string>;
-
 export type RenderFunction = (
     router: DataRouter,
     context: StaticHandlerContext,
@@ -41,7 +38,6 @@ export type EntryServerType = {
     render: RenderFunction;
     createHeadHtml: CreateHeadHtmlFunction;
     createSSRRouter: CreateSSRRouterFunction;
-    devStyles?: string;
 };
 export type RenderPageFunction = (req: Request, res: Response, runtime: ServerRuntime) => Promise<void>;
 export type LoadEntryServerFunction = (vite?: ViteDevServer) => Promise<EntryServerType>;

@@ -5,7 +5,7 @@ import type { StreamHtmlResponseFunction } from '@server-types/render';
 
 const STREAM_END_MARKER = '<vite-streaming-end></vite-streaming-end>';
 
-export const streamHtmlResponse: StreamHtmlResponseFunction = ({ res, stream, template, createHeadHtml, didErrorRef, devStyles }) => {
+export const streamHtmlResponse: StreamHtmlResponseFunction = ({ res, stream, template, createHeadHtml, didErrorRef }) => {
     const nonce = res.locals.cspNonce;
     if (!nonce) throw new Error('CSP nonce missing in streamHtmlResponse');
 
@@ -13,7 +13,7 @@ export const streamHtmlResponse: StreamHtmlResponseFunction = ({ res, stream, te
     res.set({ 'Content-Type': 'text/html' });
 
     const imagePreloads = createImagePreloads(nonce);
-    const headHtml = createHeadHtml(nonce, imagePreloads, devStyles);
+    const headHtml = createHeadHtml(nonce, imagePreloads);
     const [htmlStart, htmlEnd] = template.replace('<!--app-head-->', headHtml).split('<!--app-html-->');
     let htmlEnded = false;
 

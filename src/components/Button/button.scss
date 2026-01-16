@@ -3,17 +3,13 @@
 @use 'variables/sizes' as *;
 
 .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: space(2);
-    border-radius: var(--border-radius);
+    width: 100%;
     cursor: pointer;
+    border-radius: var(--border-radius);
     padding: space(1) space(2);
     outline: none;
-    width: max-content;
     height: $button-height;
-    transition: all .3s;
+    transition: background-color .3s;
     @include typography(button);
 
     &.primary {

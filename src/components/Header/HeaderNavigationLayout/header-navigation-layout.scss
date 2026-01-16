@@ -1,30 +1,29 @@
 @use 'functions/spacing' as *;
 @use 'mixins/typography' as *;
+@use 'mixins/flex' as *;
 @use 'variables/typography' as *;
 
 .header-navigation-layout {
-    width: 100%;
-    display: flex;
+    flex: 1;
     gap: space(2);
+    @include flex();
 
     .header-navigation-layout__logo {
-        display: flex;
+        @include flex();
         width: 150px;
     }
 
     .header-navigation-layout__items {
         flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: space(2);
+        @include flex(center, center);
 
         .header-navigation-layout__item {
-            display: flex;
-            @include typography(link);
             padding: space(1) space(2);
             transition: color .2s ease-in-out;
             position: relative;
+            @include typography(link);
+            @include flex();
 
             &.active {
                 background-color: var(--background-tonic);
