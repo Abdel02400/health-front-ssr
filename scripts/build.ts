@@ -4,6 +4,8 @@ import { execSync } from 'node:child_process';
 import { DIST_PATH, CLIENT_DIST_PATH, SERVER_DIST_PATH, ENTRY_SERVER_PATH } from '@server-config/paths';
 import { serverBuildOptions } from '@esbuild-config';
 
+execSync('pnpm validate:routes', { stdio: 'inherit' });
+
 if (fs.existsSync(DIST_PATH)) {
     execSync('pnpm clean', { stdio: 'inherit' });
 }

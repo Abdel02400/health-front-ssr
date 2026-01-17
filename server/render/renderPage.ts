@@ -12,22 +12,29 @@ export const renderPage: RenderPageFunction = async (req, res, runtime) => {
     const { render, createHeadHtml, createSSRRouter } = await loadEntryServer(runtime.vite);
 
     const result = await createSSRRouter(webRequest);
+
     if (result.type === ROUTER_RESULT.RESPONSE) {
         await handleSSRResponse(result, res);
         return;
     }
 
-    const template = await loadHtmlTemplate(webRequest.url, runtime);
+    const { router, context } = result;
+    const { url } = webRequest;
+    const path = new URL(webRequest.url).pathname;
+
+    const template = await loadHtmlTemplate(url, runtime);
     const store = createSSRStore();
+
     let didError = false;
 
-    const stream = render(result.router, result.context, store, {
+    const stream = render(router, context, store, {
         onShellReady() {
             streamHtmlResponse({
                 res,
                 stream,
                 template,
                 createHeadHtml,
+                path,
                 didErrorRef: { value: didError }
             });
         },

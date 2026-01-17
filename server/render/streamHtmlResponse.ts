@@ -1,17 +1,19 @@
 import { Transform } from 'node:stream';
 import { ENV } from '@server-config/env';
+import { getRouteAssets } from '@server-ssr/manifest';
 import type { StreamHtmlResponseFunction } from '@server-types/render';
 
 const STREAM_END_MARKER = '<vite-streaming-end></vite-streaming-end>';
 
-export const streamHtmlResponse: StreamHtmlResponseFunction = ({ res, stream, template, createHeadHtml, didErrorRef }) => {
+export const streamHtmlResponse: StreamHtmlResponseFunction = ({ res, stream, template, createHeadHtml, path, didErrorRef }) => {
     const nonce = res.locals.cspNonce;
     if (!nonce) throw new Error('CSP nonce missing in streamHtmlResponse');
 
     res.status(didErrorRef.value ? 500 : 200);
     res.set({ 'Content-Type': 'text/html' });
 
-    const headHtml = createHeadHtml(nonce);
+    const routeAssets = getRouteAssets(path);
+    const headHtml = createHeadHtml(nonce, routeAssets);
     const [htmlStart, htmlEnd] = template.replace('<!--app-head-->', headHtml).split('<!--app-html-->');
     let htmlEnded = false;
 

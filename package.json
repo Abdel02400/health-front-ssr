@@ -8,6 +8,7 @@
     "build": "tsx scripts/build.ts",
     "start": "cross-env NODE_ENV=production node dist/server-app/index.js",
     "clean": "tsx scripts/clean.ts",
+    "validate:routes": "tsx scripts/validateRoutes.ts",
     "preview": "tsx scripts/preview.ts",
     "lint": "tsc --noEmit && eslint -c eslint.config.js --ext .ts,.tsx \"src/**/*\" \"server/**/*\" \"scripts/**/*\"",
     "lf": "eslint -c eslint.config.js --ext .ts,.tsx \"src/**/*\" \"server/**/*\" \"scripts/**/*\"",

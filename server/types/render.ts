@@ -13,6 +13,7 @@ type StreamHtmlResponseOptions = {
     stream: PipeableStream;
     template: string;
     createHeadHtml: CreateHeadHtmlFunction;
+    path: string;
     didErrorRef: { value: boolean };
 };
 

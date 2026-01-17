@@ -3,19 +3,25 @@ import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router';
 import { store } from '@client-store/store';
-import { router } from '@client-router/routerClient';
+import { createRouter } from '@client-router/routerClient';
 import { initializeRenderState } from '@client-utils/initializeRenderState';
 
-const rootElement: HTMLElement | null = document.getElementById('root');
-if (!rootElement) throw new Error('Root element with id "root" not found. Hydration cannot proceed.');
+const hydrate = async () => {
+    const router = await createRouter();
 
-const app: ReactElement = (
-    <StrictMode>
-        <Provider store={store}>
-            <RouterProvider router={router} />
-        </Provider>
-    </StrictMode>
-);
+    const rootElement: HTMLElement | null = document.getElementById('root');
+    if (!rootElement) throw new Error('Root element with id "root" not found. Hydration cannot proceed.');
 
-initializeRenderState();
-hydrateRoot(rootElement, app);
+    const app: ReactElement = (
+        <StrictMode>
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        </StrictMode>
+    );
+
+    initializeRenderState();
+    hydrateRoot(rootElement, app);
+};
+
+hydrate();
