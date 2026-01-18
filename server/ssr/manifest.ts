@@ -3,7 +3,7 @@ import type { Manifest } from 'vite';
 import { CLIENT_MANIFEST_PATH } from '@server-config/paths';
 import { getEntriesForPath } from '@shared-router/routeConfig';
 import { ENV } from '@server-config/env';
-import type { RouteAssetsType } from '@server-types/routes';
+import type { RouteAssetsType } from '@server-types/route';
 
 let cachedManifest: Manifest | null = null;
 

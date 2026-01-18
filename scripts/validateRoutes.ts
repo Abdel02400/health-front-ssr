@@ -2,7 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { routeConfig } from '@shared-router/routeConfig';
 
-const entries = [routeConfig.layout.entry, ...routeConfig.pages.map(p => p.entry)];
+const entries = [
+    routeConfig.layout.entry,
+    ...Object.values(routeConfig.pages).map(p => p.entry)
+];
 const missing: string[] = [];
 
 for (const entry of entries) {

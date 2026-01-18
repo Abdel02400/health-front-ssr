@@ -10,8 +10,7 @@ function HeroSection(): ReactElement {
         <section className='hero-section'>
             <div className='hero-section__content'>
                 <Title>
-                    Atteignez vos objectifs physiques<br />
-                    avec un coach IA intelligent
+                    Atteignez vos objectifs physiques avec un coach IA intelligent
                 </Title>
                 <p className='hero-section__content-descriptions'>
                     Organisez votre alimentation, suivez votre progression et restez motivé grâce à un accompagnement personnalisé.

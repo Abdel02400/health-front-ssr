@@ -1,4 +1,4 @@
-import type { RouteAssetsType } from '@server-types/routes';
+import type { RouteAssetsType } from '@server-types/route';
 
 export const injectRouteAssets = (nonce: string, routeAssets: RouteAssetsType): string => {
     const { js, css } = routeAssets;
