@@ -1,0 +1,35 @@
+@use 'variables/spacing-shape' as *;
+@use 'mixins/flex' as *;
+@use 'functions/spacing' as *;
+
+.mobile-navigation {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    background-color: var(--background);
+    box-shadow: var(--header-box-shadow);
+
+    @media only screen and (min-width: $large-breakpoint) {
+        display: none;
+    }
+
+    .mobile-navigation__items {
+        @include flex(flex-start, center);
+
+        .mobile-navigation__item {
+            flex: 1;
+
+            .mobile-navigation__item-icon {
+                padding: space(2);
+                @include flex(center);
+
+                &.active {
+                    background-color: var(--background-tonic-light);
+                    .icon svg {
+                        fill: var(--tonic);
+                    }
+                }
+            }
+        }
+    }
+}

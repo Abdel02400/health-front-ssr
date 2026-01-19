@@ -1,3 +1,18 @@
+@use 'mixins/flex' as *;
+@use 'functions/spacing' as *;
+@use 'variables/spacing-shape' as *;
+
+.App {
+    min-height: 100vh;
+    gap: space(2);
+    @include flex(space-between, stretch, column);
+
+    @media only screen and (min-width: $large-breakpoint) {
+        gap: space(6);
+        @include flex(flex-start, stretch, column);
+    }
+}
+
 .container {
     width: 100%;
     padding-left: calc(50% - var(--container-width) / 2);

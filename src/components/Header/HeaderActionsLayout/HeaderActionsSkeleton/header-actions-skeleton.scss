@@ -2,6 +2,7 @@
 @use 'mixins/animation' as *;
 @use 'mixins/flex' as *;
 @use 'variables/sizes' as *;
+@use 'variables/spacing-shape' as *;
 
 .header-actions-skeleton {
     @include flex();
@@ -14,10 +15,18 @@
     }
 
     .header-actions-skeleton__button {
-        width: 100px;
+        width: 70px;
+
+        @media only screen and (min-width: $small-breakpoint) {
+            width: 100px;
+        }
     }
 
     .header-actions-skeleton__icon {
-        width: 50px;
+        width: 40px;
+
+        @media only screen and (min-width: $small-breakpoint) {
+            width: 50px;
+        }
     }
 }

@@ -2,10 +2,13 @@
 @use 'mixins/flex' as *;
 
 .header {
-    @include flex(flex-start, center);
+    position: sticky;
+    top: 0;
+    z-index: 100;
     gap: space(2);
     padding-top: space(2);
     padding-bottom: space(2);
     background-color: var(--background);
     box-shadow: var(--header-box-shadow);
+    @include flex(flex-start, center);
 }

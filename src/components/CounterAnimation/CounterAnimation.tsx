@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactElement } from 'react';
+import { useIntersectionObserver } from '@client-hooks/useIntersectionObserver';
 
 type CounterAnimationProps = {
   target: number;
@@ -7,8 +8,11 @@ type CounterAnimationProps = {
 
 function CounterAnimation({ target, duration = 2000 }: CounterAnimationProps): ReactElement {
     const [count, setCount] = useState(0);
+    const { ref, isVisible } = useIntersectionObserver<HTMLSpanElement>();
 
     useEffect(() => {
+        if (!isVisible) return;
+
         const start = performance.now();
         let animationId: number;
 
@@ -22,9 +26,9 @@ function CounterAnimation({ target, duration = 2000 }: CounterAnimationProps): R
 
         animationId = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(animationId);
-    }, [target, duration]);
+    }, [isVisible, target, duration]);
 
-    return <span className='counter-animation'>{count}</span>;
+    return <span ref={ref} className='counter-animation'>{count}</span>;
 }
 
 export default CounterAnimation;

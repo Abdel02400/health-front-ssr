@@ -16,16 +16,16 @@
         background-color: var(--tonic);
 
         &:hover {
-            background-color: var(--tonic-dark);
+            background-color: var(--background-tonic-dark);
         }
     }
 
     &.secondary {
-        color: var(--text-secondary);
+        color: var(--tonic);
         border: var(--border-grey);
 
         &:hover {
-            background-color: var(--tonic-light);
+            background-color: var(--background-tonic-light);
         }
     }
 }

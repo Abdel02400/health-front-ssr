@@ -2,6 +2,7 @@
 @use 'mixins/typography' as *;
 @use 'mixins/flex' as *;
 @use 'variables/typography' as *;
+@use 'variables/spacing-shape' as *;
 
 .header-navigation-layout {
     flex: 1;
@@ -10,13 +11,21 @@
 
     .header-navigation-layout__logo {
         @include flex();
-        width: 150px;
+        width: 100px;
+
+        @media only screen and (min-width: $small-breakpoint) {
+            width: 150px;
+        }
     }
 
     .header-navigation-layout__items {
-        flex: 1;
-        gap: space(2);
-        @include flex(center, center);
+        display: none;
+
+        @media only screen and (min-width: $large-breakpoint) {
+            flex: 1;
+            gap: space(2);
+            @include flex(center, center);
+        }
 
         .header-navigation-layout__item {
             padding: space(1) space(2);
@@ -26,7 +35,7 @@
             @include flex();
 
             &.active {
-                background-color: var(--background-tonic);
+                background-color: var(--background-tonic-light);
                 border-radius: var(--border-radius);
                 color: var(--tonic);
                 transition: none;

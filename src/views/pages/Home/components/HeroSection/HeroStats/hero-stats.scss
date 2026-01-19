@@ -5,24 +5,21 @@
 
 .hero-stats {
     width: 100%;
-    padding: space(1);
+    padding: space(2);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     @include flex(flex-start, center);
-
-    @media only screen and (min-width: $medium-breakpoint) {
-        padding: space(2);
-    }
 
     .hero-stats_items {
         flex: 1;
         gap: space(1);
         padding: 0 space(2);
         position: relative;
-        text-align: left;
+        text-align: center;
         @include flex(flex-start, stretch, column);
 
         @media only screen and (min-width: $medium-breakpoint) {
+            text-align: left;
             padding: 0 space(4);
         }
 

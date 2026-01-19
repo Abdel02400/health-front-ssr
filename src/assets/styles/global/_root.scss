@@ -5,13 +5,11 @@
     --container-width: calc(100vw - var(--container-padding) * 2);
     --space: 8px;
     --border-radius: 8px;
-    --large-breakpoint: #{$large-breakpoint};
-    --medium-breakpoint: #{$medium-breakpoint};
-    --small-breakpoint: #{$small-breakpoint};
-    --very-small-breakpoint: #{$small-breakpoint};
 
     --background: #FFF;
     --background-tonic: #7C3AED19;
+    --background-tonic-light: #7C3AED23;
+    --background-tonic-dark: #6430BD;
     --background-modal: #0000007F;
     --background-skeleton: #E0E0E0;
     --background-linear: linear-gradient(90deg, var(--tonic) 0%,var(--pink) 50%, var(--orange) 100%);
@@ -23,8 +21,6 @@
     --border-grey: 1px solid var(--grey);
 
     --tonic: #7C3AED;
-    --tonic-light: #7C3AED23;
-    --tonic-dark: #6430BD;
     --pink: #EC4899;
     --orange: #F97316;
     --grey: #E6E8EA;
