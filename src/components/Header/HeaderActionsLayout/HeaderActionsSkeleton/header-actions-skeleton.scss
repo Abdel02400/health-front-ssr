@@ -21,12 +21,4 @@
             width: 100px;
         }
     }
-
-    .header-actions-skeleton__icon {
-        width: 40px;
-
-        @media only screen and (min-width: $small-breakpoint) {
-            width: 50px;
-        }
-    }
 }

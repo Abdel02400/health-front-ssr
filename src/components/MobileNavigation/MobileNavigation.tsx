@@ -10,7 +10,7 @@ import './mobile-navigation.scss';
 
 function MobileNavigation(): ReactElement {
     return (
-        <div className='mobile-navigation'>
+        <div className='mobile-navigation container'>
             <ul className='mobile-navigation__items'>
                 <li className='mobile-navigation__item'>
                     <NavLink className='mobile-navigation__item-icon' to={routePath('home')} end>

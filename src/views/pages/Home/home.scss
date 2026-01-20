@@ -1,2 +1,11 @@
+@use 'functions/spacing' as *;
+@use 'variables/spacing-shape' as *;
+
 .home {
+    padding-top: space(6);
+    padding-bottom: space(2);
+
+    @media only screen and (min-width: $medium-breakpoint) {
+        padding-top: space(10);
+    }
 }

@@ -6,7 +6,6 @@ function HeaderActionsSkeleton(): ReactElement {
         <div className='header-actions-skeleton'>
             <div className='header-actions-skeleton__button'></div>
             <div className='header-actions-skeleton__button'></div>
-            <div className='header-actions-skeleton__icon'></div>
         </div>
     );
 }

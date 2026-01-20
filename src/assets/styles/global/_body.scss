@@ -11,9 +11,7 @@ html:not(.ready) *::after {
 }
 
 body {
-    background-image: var(--background-image);
     background-color: var(--background);
-    background-size: 20px 20px, 20px 20px;
     user-select: none;
     outline: none;
     touch-action: manipulation;

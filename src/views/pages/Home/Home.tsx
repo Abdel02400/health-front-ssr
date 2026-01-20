@@ -4,7 +4,7 @@ import './home.scss';
 
 function Home(): ReactElement {
     return (
-        <div className='home container'>
+        <div className='home'>
             <HeroSection />
         </div>
     );

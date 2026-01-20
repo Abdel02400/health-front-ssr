@@ -6,8 +6,10 @@ import './header.scss';
 function Header(): ReactElement {
     return (
         <div className='header container'>
-            <HeaderNavigationLayout />
-            <HeaderActionsLayout />
+            <div className='header__content'>
+                <HeaderNavigationLayout />
+                <HeaderActionsLayout />
+            </div>
         </div>
     );
 }

@@ -6,21 +6,24 @@
     position: sticky;
     bottom: 0;
     z-index: 100;
-    background-color: var(--background);
-    box-shadow: var(--header-box-shadow);
+    padding-bottom: space(2);
 
     @media only screen and (min-width: $large-breakpoint) {
         display: none;
     }
 
     .mobile-navigation__items {
+        overflow: hidden;
+        backdrop-filter: var(--backdrop-filter);
+        border-radius: var(--border-radius-rounded);
+        box-shadow: var(--header-box-shadow);
         @include flex(flex-start, center);
 
         .mobile-navigation__item {
             flex: 1;
 
             .mobile-navigation__item-icon {
-                padding: space(2);
+                padding: space(1);
                 @include flex(center);
 
                 &.active {
