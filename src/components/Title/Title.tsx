@@ -1,8 +1,10 @@
 import type { ReactElement } from 'react';
+import { useMemo } from 'react';
 import { useIntersectionObserver } from '@client-hooks/useIntersectionObserver';
 import { isEmpty, splitWords } from '@client-utils/string';
-import './title.scss';
 import { clsx } from '@client-utils/clsx';
+import { useCssVariable } from '@client-hooks/useCssVariable';
+import './title.scss';
 
 type TitleProps = {
     text: string;
@@ -11,23 +13,33 @@ type TitleProps = {
 
 function Title({ text, isAnimated = false }: TitleProps): ReactElement {
     const { ref, isVisible } = useIntersectionObserver<HTMLHeadingElement>();
+    const animationDuration = useCssVariable('--title-animation-duration', 600);
 
-    const renderAnimatedText = (animatedText: string): string | ReactElement[] => {
-        if (!isAnimated || isEmpty(animatedText)) return animatedText;
+    const words = useMemo(() => {
+        if (!isAnimated || isEmpty(text)) return [];
+        return splitWords(text);
+    }, [text, isAnimated]);
 
-        return splitWords(animatedText).map((word, index) => (
+    const animatedText = useMemo(() => {
+        if (!isAnimated || isEmpty(text)) return text;
+
+        const delayStep = animationDuration / words.length;
+
+        return words.map((word, index) => (
             <span
-                key={index}
+                key={`${word}-${index}`}
                 className={clsx('title__word', isVisible && 'title__word--visible')}
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * delayStep}ms` }}
             >
                 {word}{' '}
             </span>
         ));
-    };
+    }, [isAnimated, isVisible, text, words, animationDuration]);
 
     return (
-        <h2 ref={ref} className='title'>{renderAnimatedText(text)}</h2>
+        <h2 ref={ref} className={clsx('title', isVisible && 'title--visible')}>
+            {animatedText}
+        </h2>
     );
 }
 

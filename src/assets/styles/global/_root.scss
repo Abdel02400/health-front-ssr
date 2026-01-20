@@ -29,6 +29,7 @@
     --text-dark: #000;
 
     --modal-animation: .2s;
+    --animated-reveal-duration: 600ms;
 
     @media only screen and (min-width: $large-breakpoint) {
         --container-width: 1160px;

@@ -1,0 +1,14 @@
+.animated-reveal {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(20px);
+    transition-property: opacity, filter, transform;
+    transition-timing-function: ease-out;
+    will-change: opacity, filter, transform;
+
+    &--visible {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}

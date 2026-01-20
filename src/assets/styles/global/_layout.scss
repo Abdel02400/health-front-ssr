@@ -11,6 +11,14 @@
     }
 }
 
+.icon {
+    @include flex();
+
+    svg { 
+        width: 100%; 
+    }
+}
+
 .container {
     width: 100%;
     padding-left: calc(50% - var(--container-width) / 2);
