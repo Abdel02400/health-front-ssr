@@ -32,7 +32,7 @@
     --text-light: #FFF;
     --text-dark: #000;
 
-    --modal-animation: .2s;
+    --modal-animation: 200ms;
     --animated-reveal-duration: 600ms;
 
     @media only screen and (min-width: $large-breakpoint) {

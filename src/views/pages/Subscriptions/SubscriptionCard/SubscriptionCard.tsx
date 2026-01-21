@@ -38,8 +38,8 @@ function SubscriptionCard(props: SubscriptionCardProps): ReactElement {
                 <p className='subscription-card__price'>{price}&euro;</p>
                 <p className='subscription-card__comment'>{comment}</p>
                 <ul className='subscription-card__items'>
-                    {canDo.map((item, key) => (
-                        <li key={key} className='subscription-card__item'>
+                    {canDo.map((item, index) => (
+                        <li key={`${item}-${index}`} className='subscription-card__item'>
                             <CheckIcon />
                             {item}
                         </li>

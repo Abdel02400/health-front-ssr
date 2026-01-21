@@ -21,7 +21,7 @@ function Subscriptions(): ReactElement {
                         'Accès aux fonctionnalités de base',
                     ]}
                     btnText='Essayer gratuitement'
-                    btnAction={() => console.info('ok')}
+                    btnAction={() => {}}
                     isFree
                 />
                 <SubscriptionCard
@@ -37,7 +37,7 @@ function Subscriptions(): ReactElement {
                         'Accès aux fonctionnalités de base',
                     ]}
                     btnText='Essayer gratuitement'
-                    btnAction={() => console.info('ok')}
+                    btnAction={() => {}}
                 />
                 <SubscriptionCard
                     title='Gratuit'
@@ -52,7 +52,7 @@ function Subscriptions(): ReactElement {
                         'Accès aux fonctionnalités de base',
                     ]}
                     btnText='Essayer gratuitement'
-                    btnAction={() => console.info('ok')}
+                    btnAction={() => {}}
                 />
             </div>
         </div>

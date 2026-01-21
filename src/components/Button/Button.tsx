@@ -1,4 +1,4 @@
-import type { PropsWithChildren, ReactElement } from 'react';
+import { memo, type PropsWithChildren, type ReactElement } from 'react';
 import { clsx } from '@client-utils/clsx';
 import './button.scss';
 
@@ -11,7 +11,7 @@ type ButtonProps = PropsWithChildren<{
     onClick?: () => void;
 }>;
 
-function Button(props: ButtonProps): ReactElement {
+const Button = memo(function Button(props: ButtonProps): ReactElement {
     const {
         children,
         type = 'button',
@@ -26,6 +26,6 @@ function Button(props: ButtonProps): ReactElement {
             {children}
         </button>
     );
-}
+});
 
 export default Button;

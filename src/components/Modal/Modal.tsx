@@ -4,6 +4,7 @@ import { useLockBodyScroll } from '@client-hooks/useLockBodyScroll';
 import CloseIcon from '@client-components/icons/CloseIcon';
 import { clsx } from '@client-utils/clsx';
 import LogoIcon from '@client-components/icons/LogoIcon';
+import { useCssVariable } from '@client-hooks/useCssVariable';
 
 type ModalProps = PropsWithChildren<{
     isOpen: boolean;
@@ -18,12 +19,8 @@ function TemplateModal(props: ModalProps): ReactElement {
         modalClassName = undefined
     } = props;
     const [fadeout, setFadeout] = useState<boolean>(false);
+    const animationDuration = useCssVariable('--modal-animation', 200);
     useLockBodyScroll();
-
-    const animationDurationString = getComputedStyle(document.documentElement)
-        .getPropertyValue('--modal-animation')
-        .replace('s', '');
-    const animationDuration = parseFloat(animationDurationString) * 1000;
 
     const closeModal = (): void => {
         if (typeof onClose !== 'function') return;

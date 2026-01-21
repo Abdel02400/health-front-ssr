@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactElement, type PropsWithChildren } from 'react';
+import { useState, useEffect, memo, type ReactElement, type PropsWithChildren } from 'react';
 import { useIntersectionObserver } from '@client-hooks/useIntersectionObserver';
 import { useCssVariable } from '@client-hooks/useCssVariable';
 import { clsx } from '@client-utils/clsx';
@@ -9,7 +9,7 @@ type AnimatedRevealProps = PropsWithChildren<{
     className?: string;
 }>;
 
-function AnimatedReveal({ children, delay = 0, className }: AnimatedRevealProps): ReactElement {
+const AnimatedReveal = memo(function AnimatedReveal({ children, delay = 0, className }: AnimatedRevealProps): ReactElement {
     const [isReady, setIsReady] = useState<boolean>(false);
     const { ref, isVisible } = useIntersectionObserver<HTMLDivElement>();
     const duration = useCssVariable('--animated-reveal-duration', 600);
@@ -29,6 +29,6 @@ function AnimatedReveal({ children, delay = 0, className }: AnimatedRevealProps)
             {children}
         </div>
     );
-}
+});
 
 export default AnimatedReveal;

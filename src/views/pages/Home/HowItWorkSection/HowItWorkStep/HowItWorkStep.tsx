@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 import './how-it-work-step.scss';
 
 type HowItWorkStepProps = {
@@ -9,7 +9,7 @@ type HowItWorkStepProps = {
     description: string;
 }
 
-function HowItWorkStep(props: HowItWorkStepProps): ReactElement {
+const HowItWorkStep = memo(function HowItWorkStep(props: HowItWorkStepProps): ReactElement {
     const { illustrationSrc, illustrationAlt, stepNumber, title, description } = props;
 
     return (
@@ -21,6 +21,6 @@ function HowItWorkStep(props: HowItWorkStepProps): ReactElement {
             </div>
         </div>
     );
-}
+});
 
 export default HowItWorkStep;
