@@ -1,11 +1,15 @@
 @use 'functions/spacing' as *;
 @use 'variables/spacing-shape' as *;
+@use 'mixins/flex' as *;
 
 .home {
     padding-top: space(6);
-    padding-bottom: space(2);
+    padding-bottom: space(6);
+    gap: space(16);
+    @include flex(flex-start, stretch, column);
 
     @media only screen and (min-width: $medium-breakpoint) {
         padding-top: space(10);
+        padding-bottom: space(10);
     }
 }

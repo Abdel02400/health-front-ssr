@@ -7,14 +7,14 @@ type UseScrollReturn = {
 };
 
 export const useScroll = (): UseScrollReturn => {
-    const _scrollTo = (top: number, behavior: ScrollBehavior = 'smooth') => {
+    const _scrollTo = (top: number, behavior: ScrollBehavior = 'instant') => {
         window.scrollTo({
             top,
             behavior,
         });
     };
 
-    const scrollToTop = useCallback((behavior: ScrollBehavior = 'smooth') => {
+    const scrollToTop = useCallback((behavior: ScrollBehavior = 'instant') => {
         _scrollTo(0, behavior);
     }, []);
 

@@ -1,0 +1,42 @@
+@use 'functions/spacing' as *;
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'variables/spacing-shape' as *;
+
+.subscriptions {
+    padding-top: space(6);
+    padding-bottom: space(6);
+    gap: space(6);
+    @include flex(center, center, column);
+
+    .title {
+        @include typography(text-gradient);
+    }
+
+    .subscriptions__cards {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: space(4);
+
+        @media only screen and (min-width: $medium-breakpoint) {
+            grid-template-columns: repeat(2, 1fr);
+
+            > *:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: calc(50% - space(2));
+            }
+        }
+
+        @media only screen and (min-width: $large-breakpoint) {
+            grid-template-columns: repeat(3, 1fr);
+
+            > *:last-child:nth-child(odd) {
+                grid-column: auto;
+                justify-self: auto;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -23,7 +23,7 @@ function Title({ text, isAnimated = false }: TitleProps): ReactElement {
     const animatedText = useMemo(() => {
         if (!isAnimated || isEmpty(text)) return text;
 
-        const delayStep = animationDuration / words.length;
+        const delayStep = Math.round(animationDuration / words.length);
 
         return words.map((word, index) => (
             <span

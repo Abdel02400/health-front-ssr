@@ -1,0 +1,59 @@
+@use 'functions/spacing' as *;
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+
+.subscription-card {
+    padding: space(4);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    gap: space(4);
+    border: var(--border-tonic);
+    @include flex(flex-start, stretch, column);
+
+    &.subscription-card--free {
+        border: var(--border-grey);
+    }
+
+    .subscription-card__header {
+        @include flex(space-between, center);
+
+        .subscription-card__header-title {
+            @include typography(paragraph);
+            color: var(--text-dark);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .subscription-card__header-information {
+            @include typography(paragraph);
+            padding: space(1);
+            border-radius: var(--border-radius);
+            background-color: var(--tonic);
+            color: var(--text-light);
+        }
+    }
+
+    .subscription-card__price {
+        @include typography(paragraph);
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+
+    .subscription-card__comment {
+        @include typography(paragraph);
+    }
+
+    .subscription-card__items {
+        gap: space(2);
+        @include flex(flex-start, stretch, column);
+
+        .subscription-card__item {
+            gap: space(2);
+            padding: space(2) 0;
+            border-bottom: var(--border-grey);
+            @include typography(paragraph);
+            @include flex(flex-start, center);
+        }
+    }
+}

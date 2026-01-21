@@ -1,7 +1,9 @@
+@use 'functions/spacing' as *;
+
 .animated-reveal {
     opacity: 0;
     filter: blur(12px);
-    transform: translateY(20px);
+    transform: translateY(space(3));
     transition-property: opacity, filter, transform;
     transition-timing-function: ease-out;
     will-change: opacity, filter, transform;

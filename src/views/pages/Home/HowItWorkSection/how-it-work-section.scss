@@ -1,0 +1,41 @@
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+@use 'variables/spacing-shape' as *;
+
+.how-it-work-section {
+    gap: space(10);
+    @include flex(flex-start, center, column);
+
+    .title {
+        text-align: center;
+        @include typography(text-gradient);
+    }
+
+    .how-it-work-section__steps {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: space(4);
+
+        @media only screen and (min-width: $medium-breakpoint) {
+            grid-template-columns: repeat(2, 1fr);
+
+            > *:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: calc(50% - space(2));
+            }
+        }
+
+        @media only screen and (min-width: $large-breakpoint) {
+            grid-template-columns: repeat(3, 1fr);
+
+            > *:last-child:nth-child(odd) {
+                grid-column: auto;
+                justify-self: auto;
+                width: 100%;
+            }
+        }
+    }
+}

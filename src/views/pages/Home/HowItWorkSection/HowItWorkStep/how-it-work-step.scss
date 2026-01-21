@@ -1,0 +1,34 @@
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+
+.how-it-work-step {
+    height: 100%;
+    gap: space(6);
+    padding: space(4);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: var(--border-tonic);
+    @include flex(flex-start, center, column);
+
+    .how-it-work-step__illustration {
+        width: auto;
+        height: 150px;
+    }
+
+    .how-it-work-step__content {
+        flex: 1;
+        gap: space(4);
+        text-align: center;
+        @include flex(space-between, center, column);
+
+        .how-it-work-step__content-title {
+            @include typography(little-title);
+            @include typography(text-gradient);
+        }
+
+        .how-it-work-step__content-description {
+            @include typography(paragraph);
+        }
+    }
+}

@@ -19,13 +19,9 @@
     }
 
     .header-navigation-layout__items {
-        display: none;
-
-        @media only screen and (min-width: $large-breakpoint) {
-            flex: 1;
-            gap: space(2);
-            @include flex(center, center);
-        }
+        flex: 1;
+        gap: space(2);
+        @include flex(center, center);
 
         .header-navigation-layout__item {
             padding: space(1) space(2);
