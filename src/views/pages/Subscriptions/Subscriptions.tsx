@@ -27,7 +27,7 @@ function Subscriptions(): ReactElement {
                 <SubscriptionCard
                     title='Gratuit'
                     information='Gratuit'
-                    price={0}
+                    price={9}
                     comment='Testez la plateforme gratuitement'
                     canDo={[
                         'Accès aux fonctionnalités de base',
@@ -42,7 +42,7 @@ function Subscriptions(): ReactElement {
                 <SubscriptionCard
                     title='Gratuit'
                     information='Gratuit'
-                    price={0}
+                    price={99}
                     comment='Testez la plateforme gratuitement'
                     canDo={[
                         'Accès aux fonctionnalités de base',

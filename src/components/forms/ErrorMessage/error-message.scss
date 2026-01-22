@@ -1,0 +1,7 @@
+@use 'mixins/form' as *;
+
+.error-message {
+    word-wrap: break-word;
+    text-align: left;
+    @include form(error-message);
+}

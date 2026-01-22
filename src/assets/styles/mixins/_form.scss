@@ -1,0 +1,36 @@
+@use 'variables/typography' as *;
+@use 'variables/sizes' as *;
+
+@mixin input-text {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $input-text-size;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder {
+      color: var(--placeholder);
+    }
+
+    &::-moz-placeholder {
+      opacity: 1;
+    }
+}
+
+@mixin error-message {
+    font-family: $font-base;
+    font-weight: $font-weight-bold;
+    font-size: $error-message-size;
+    color: var(--error);
+}
+
+@mixin form($type) {
+    @if $type == 'input-text' {
+        @include input-text;
+    } @else if $type == 'error-message' {
+        @include error-message;
+    } @else if $type == 'password-strength' {
+    }
+}

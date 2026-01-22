@@ -1,4 +1,5 @@
 @use 'variables/spacing-shape' as *;
+@use 'variables/form' as *;
 
 :root {
     --container-padding: 20px;
@@ -6,14 +7,12 @@
     --space: 8px;
     --border-radius: 8px;
     --border-radius-rounded: 999px;
-    --large-breakpoint: #{$large-breakpoint};
-    --medium-breakpoint: #{$medium-breakpoint};
-    --small-breakpoint: #{$small-breakpoint};
 
     --background: #FFF;
     --background-tonic: #7C3AED19;
     --background-tonic-light: #7C3AED23;
     --background-tonic-dark: #6430BD;
+    --background-grey: #F4F5F6;
     --background-modal: #0000007F;
     --background-skeleton: #E0E0E0;
     --background-linear: linear-gradient(90deg, var(--tonic) 0%,var(--pink) 50%, var(--orange) 100%);
@@ -28,12 +27,19 @@
     --pink: #EC4899;
     --orange: #F97316;
     --grey: #E6E8EA;
+    --error: #FF5A64;
     --text-secondary: #77808D;
     --text-light: #FFF;
     --text-dark: #000;
 
     --modal-animation: 200ms;
     --animated-reveal-duration: 600ms;
+
+    --large-breakpoint: #{$large-breakpoint};
+    --medium-breakpoint: #{$medium-breakpoint};
+    --small-breakpoint: #{$small-breakpoint};
+    --field-error: #{$field-error};
+    --field-valid: #{$field-valid};
 
     @media only screen and (min-width: $large-breakpoint) {
         --container-width: 1160px;

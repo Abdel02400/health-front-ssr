@@ -1,0 +1,53 @@
+@use 'functions/spacing' as *;
+@use 'mixins/form' as *;
+@use 'variables/form' as *;
+
+.input-field {
+    width: 100%;
+
+    &.#{$field-error} {
+        .input-field__wrapper {
+            border: 1px solid var(--error);
+        }
+    }
+
+    .input-field__wrapper {
+        display: flex;
+        align-items: center;
+        gap: space(1);
+        border-radius: var(--border-radius);
+        background-color: var(--background-grey);
+        padding: space(1.5) space(2);
+        position: relative;
+
+        input {
+            width: 100%;
+            background-color: var(--background-grey);
+            @include form(input-text);
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus {
+              transition: background-color 9999s ease-in-out 0s;
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.6;
+            }
+        }
+
+        .icon svg {
+            transition: opacity 0.2s ease;
+        }
+
+        input:disabled ~ svg,
+        input:disabled + svg {
+            opacity: 0.4;
+        }
+    }
+
+    .error-message {
+        margin-top: space(1);
+    }
+}

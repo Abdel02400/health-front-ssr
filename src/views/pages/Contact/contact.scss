@@ -1,0 +1,18 @@
+@use 'functions/spacing' as *;
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+
+.contact {
+    padding-top: space(6);
+    padding-bottom: space(6);
+    gap: space(6);
+    @include flex();
+
+    .contact__illustration {
+        max-width: 450px;
+    }
+
+    .title {
+        @include typography(text-gradient);
+    }
+}

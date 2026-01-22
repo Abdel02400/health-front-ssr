@@ -47,8 +47,12 @@
       "@client-store/*": ["src/store/*"],
       "@client-utils/*": ["src/utils/*"],
       "@client-auth/*": ["src/services/auth/*"],
+      "@client-form/*": ["src/services/form/*"],
       "@client-hooks/*": ["src/services/hooks/*"],
-      "@client-pages/*": ["src/views/pages/*"]
+      "@client-pages/*": ["src/views/pages/*"],
+      "@client-forms/*": ["src/views/forms/*"],
+      "@client-dtos/*": ["src/dtos/*"],
+      "@client-constants/*": ["src/constants/*"],
     }
   },
   "include": [

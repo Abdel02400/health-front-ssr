@@ -13,3 +13,5 @@ export const parseCssDuration = (value: string): number => {
     if (value.endsWith('s')) return parseFloat(value) * 1000;
     return parseFloat(value);
 };
+
+export const convertNameToId = (name: string): string => name.replace(/\./g, '_');
