@@ -1,9 +1,10 @@
 import type { ReactElement } from 'react';
 import { useMemo } from 'react';
 import { useIntersectionObserver } from '@client-hooks/useIntersectionObserver';
-import { isEmpty, splitWords } from '@client-utils/string';
+import { splitWords } from '@client-utils/string';
 import { clsx } from '@client-utils/clsx';
 import { useCssVariable } from '@client-hooks/useCssVariable';
+import { isEmpty } from '@client-utils/value';
 import './title.scss';
 
 type TitleProps = {

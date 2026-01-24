@@ -5,7 +5,7 @@
 
 .hero-section {
     position: relative;
-    gap: space(6);
+    gap: space(4);
     @include flex(flex-start, center, column);
 
     &::before {
@@ -39,8 +39,9 @@
             gap: space(8);
         }
 
-        .hero-section__content-subscrtiption,
+        .hero-section__content-subscription,
         .hero-section__content-descriptions {
+            line-height: 1.3;
             @include typography(paragraph);
         }
 

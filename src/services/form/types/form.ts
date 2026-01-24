@@ -5,6 +5,11 @@ type ValidateRuleContext<T extends FieldValues, V = unknown> = {
   formValues: T;
 };
 
+export type ItemListType<V = string> = {
+    value: V;
+    display: string;
+}
+
 export type ValidateRule<T extends FieldValues, V = unknown> = (
   ctx: ValidateRuleContext<T, V>
 ) => ValidateResult | Promise<ValidateResult>;

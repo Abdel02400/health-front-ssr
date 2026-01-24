@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import Button from '@client-components/Button/Button';
-import CheckIcon from '@client-components/icons/CheckIcon';
+import ValidIcon from '@client-components/icons/ValidIcon';
 import AnimatedReveal from '@client-components/AnimatedReveal/AnimatedReveal';
 import { clsx } from '@client-utils/clsx';
 import './subscription-card.scss';
@@ -40,7 +40,7 @@ function SubscriptionCard(props: SubscriptionCardProps): ReactElement {
                 <ul className='subscription-card__items'>
                     {canDo.map((item, index) => (
                         <li key={`${item}-${index}`} className='subscription-card__item'>
-                            <CheckIcon />
+                            <ValidIcon />
                             {item}
                         </li>
                     ))}

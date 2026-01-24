@@ -9,13 +9,13 @@ function HeroSection(): ReactElement {
     return (
         <section className='hero-section container'>
             <div className='hero-section__content'>
-                <Title 
-                    text='Atteignez vos objectifs physiques avec un coach IA intelligent'
+                <Title
+                    text="Évolue à ton rythme avec une application qui s'adapte à toi"
                     isAnimated
                 />
                 <AnimatedReveal delay={600}>
                     <p className='hero-section__content-descriptions'>
-                        Organisez votre alimentation, suivez votre progression et restez motivé grâce à un accompagnement personnalisé.
+                        Perte de poids ou prise de masse, ton plan s'ajuste chaque semaine selon tes résultats. Simple, efficace, sans prise de tête.
                     </p>
                 </AnimatedReveal>
                 <AnimatedReveal delay={600}>
@@ -25,7 +25,7 @@ function HeroSection(): ReactElement {
                     </div>
                 </AnimatedReveal>
                 <AnimatedReveal delay={600}>
-                    <p className='hero-section__content-subscrtiption'>1 mois gratuit - Sans carte bancaire</p>
+                    <p className='hero-section__content-subscription'>1 mois gratuit - Sans carte bancaire</p>
                 </AnimatedReveal>
             </div>
             <AnimatedReveal delay={1200}>

@@ -1,4 +1,4 @@
-import { useRef, type HTMLInputAutoCompleteAttribute, type HTMLInputTypeAttribute, type ReactElement } from 'react';
+import { useEffect, useRef, type ReactElement } from 'react';
 import { useFormContext, type FieldValues } from 'react-hook-form';
 import ErrorMessage from '@client-components/forms/ErrorMessage/ErrorMessage';
 import { clsx } from '@client-utils/clsx';
@@ -10,57 +10,63 @@ import { useRestrictions } from '@client-form/hooks/useRestrictions';
 import { useValidationForm } from '@client-form/hooks/useValidationForm';
 import type { FieldConfig } from '@client-form/types/form';
 import type { RestrictionOptions } from '@client-form/types/restrictions';
-import './input-field.scss';
+import './textarea-field.scss';
 
-type InputFieldProps<T extends FieldValues> = {
+type TextAreaFieldProps<T extends FieldValues> = {
     fieldConfig: FieldConfig<T>;
     placeholder: string;
     icon: ReactElement;
-    type?: HTMLInputTypeAttribute;
-    autoComplete?: HTMLInputAutoCompleteAttribute;
     restrictions?: RestrictionOptions;
     disabled?: boolean;
 };
 
-function InputField<T extends FieldValues>(props: InputFieldProps<T>): ReactElement {
+function TextAreaField<T extends FieldValues>(props: TextAreaFieldProps<T>): ReactElement {
     const {
         fieldConfig,
         placeholder,
         icon,
-        type = 'text',
-        autoComplete = undefined,
         restrictions = undefined,
         disabled = false
     } = props;
 
-    const inputRef = useRef<HTMLInputElement | null>(null);
+    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const { register } = useFormContext<T>();
     const { validationClass, error } = useValidationForm<T>(fieldConfig.name);
     const { ref, ...rest } = register(fieldConfig.name, fieldConfig.options);
-    useRestrictions(inputRef, restrictions);
+    useRestrictions(textareaRef, restrictions);
+
+    const resizeTextarea = () => {
+        if (textareaRef.current === null) return;
+        textareaRef.current.style.height = '1px';
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeTextarea);
+        return () => window.removeEventListener('resize', resizeTextarea);
+    }, []);
 
     return (
-        <div className={clsx('input-field', validationClass && validationClass)}>
-            <div className="input-field__wrapper">
+        <div className={clsx('textarea-field', validationClass && validationClass)}>
+            <div className="textarea-field__wrapper">
                 {icon}
-                <input
+                <textarea
                     {...rest}
                     ref={(e) => {
                         ref(e);
-                        inputRef.current = e;
+                        textareaRef.current = e;
                     }}
+                    onInput={resizeTextarea}
                     id={convertNameToId(fieldConfig.name)}
-                    type={type}
                     placeholder={placeholder}
-                    autoComplete={autoComplete}
                     disabled={disabled}
                 />
-                {(validationClass === FIELD_ERROR_CLASS && FIELD_ERROR_CLASS) && <span className='input-field__wrapper__validation-icon'><ErrorIcon /></span>}
-                {(validationClass === FIELD_VALID_CLASS && FIELD_VALID_CLASS) && <span className='input-field__wrapper__validation-icon'><ValidIcon /></span>}
+                {(validationClass === FIELD_ERROR_CLASS && FIELD_ERROR_CLASS) && <span className='textarea-field__wrapper__validation-icon'><ErrorIcon /></span>}
+                {(validationClass === FIELD_VALID_CLASS && FIELD_VALID_CLASS) && <span className='textarea-field__wrapper__validation-icon'><ValidIcon /></span>}
             </div>
             {error && <ErrorMessage>{error.message}</ErrorMessage>}
         </div>
     );
 }
 
-export default InputField;
+export default TextAreaField;

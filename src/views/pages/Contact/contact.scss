@@ -6,7 +6,7 @@
     padding-top: space(6);
     padding-bottom: space(6);
     gap: space(6);
-    @include flex();
+    @include flex(flex-start, flex-start);
 
     .contact__illustration {
         max-width: 450px;

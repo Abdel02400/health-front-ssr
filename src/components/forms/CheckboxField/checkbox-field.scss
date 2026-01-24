@@ -1,0 +1,67 @@
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+@use 'variables/sizes' as *;
+@use 'variables/form' as *;
+
+.checkbox-field {
+    @include flex(flex-start, flex-start, column);
+
+    .error-message {
+        margin-top: space(1);
+    }
+
+    &.#{$field-error} {
+        .checkbox-field__container input {
+            border: 1px solid var(--error);
+        }
+    }
+
+    .checkbox-field__container {
+        gap: space(2);
+        @include flex(flex-start, center);
+
+        label {
+            cursor: pointer;
+            @include typography(paragraph);
+        }
+
+        input {
+            cursor: pointer;
+            align-self: flex-start;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--background);
+            width: $checkbox-field-width;
+            height: $checkbox-field-height;
+            border-radius: $checkbox-field-radius;
+            border: var(--border-grey);
+            display: grid;
+            place-content: center;
+            position: relative;
+
+            &::before {
+                content: "";
+                width: $checkbox-field-width;
+                height: $checkbox-field-height;
+            }
+
+            &:checked {
+                background: var(--tonic);
+                border: none;
+            }
+
+            &:checked::after {
+                content: "";
+                width: calc($checkbox-field-width / 2);
+                height: calc($checkbox-field-width / 3);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border-bottom: 2px solid var(--background);
+                border-left: 2px solid var(--background);
+                transform: translate(-50%, -70%) rotate(-45deg);
+            }
+        }
+    }
+}

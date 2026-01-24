@@ -1,0 +1,13 @@
+@use 'functions/spacing' as *;
+@use 'mixins/flex' as *;
+
+form {
+    width: 100%;
+    gap: space(4);
+    @include flex(flex-start, stretch, column);
+
+    .contact-form__fields {
+        gap: space(4);
+        @include flex();
+    }
+}

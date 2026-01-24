@@ -1,7 +1,5 @@
 export const isEmpty = (val: unknown): boolean => {
-    if (val == null) return true;
+    if (val === undefined || val === null || val === '') return true;
     if (typeof val === 'string' || Array.isArray(val)) return val.length === 0;
-    if (typeof val === 'object') return Object.keys(val).length === 0;
-
     return false;
 };

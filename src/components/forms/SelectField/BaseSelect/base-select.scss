@@ -1,0 +1,23 @@
+@use 'functions/spacing' as *;
+@use 'mixins/typography' as *;
+
+.base-select {
+    .base-select__button {
+        width: 100%;
+        position: relative;
+        border-radius: var(--border-radius);
+        background-color: var(--background-grey);
+        padding: space(2);
+
+        input {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+            max-width: 200px;
+        }
+
+        .current-value {
+            @include typography(paragraph);
+        }
+    }
+}

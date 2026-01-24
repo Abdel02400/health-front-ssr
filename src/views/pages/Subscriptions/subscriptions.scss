@@ -4,13 +4,21 @@
 @use 'variables/spacing-shape' as *;
 
 .subscriptions {
-    padding-top: space(6);
-    padding-bottom: space(6);
-    gap: space(6);
-    @include flex(center, center, column);
+    gap: space(10);
+    @include flex(flex-start, center, column);
 
-    .title {
-        @include typography(text-gradient);
+    &__header {
+        text-align: center;
+        max-width: 600px;
+
+        .title {
+            @include typography(text-gradient);
+        }
+    }
+
+    &__description {
+        margin-top: space(4);
+        @include typography(paragraph);
     }
 
     .subscriptions__cards {

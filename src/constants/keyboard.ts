@@ -1,3 +1,4 @@
+export const actionKeys = ['Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'KeyJ', 'KeyK'];
 export const controlKeys = [
     'Control',
     'Backspace',

@@ -1,57 +1,62 @@
 import type { ReactElement } from 'react';
 import Title from '@client-components/Title/Title';
+import AnimatedReveal from '@client-components/AnimatedReveal/AnimatedReveal';
 import SubscriptionCard from './SubscriptionCard/SubscriptionCard';
 import './subscriptions.scss';
 
 function Subscriptions(): ReactElement {
     return (
         <div className='subscriptions container'>
-            <Title text='Nos Abonnements' />
+            <div className='subscriptions__header'>
+                <Title text='Choisis ton plan' isAnimated />
+                <AnimatedReveal delay={400}>
+                    <p className='subscriptions__description'>
+                        Commence gratuitement, passe à la version complète quand tu es prêt.
+                    </p>
+                </AnimatedReveal>
+            </div>
             <div className='subscriptions__cards'>
                 <SubscriptionCard
-                    title='Gratuit'
-                    information='Gratuit'
+                    title='Découverte'
                     price={0}
-                    comment='Testez la plateforme gratuitement'
+                    comment='Pour tester sans engagement'
                     canDo={[
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
+                        'Plan personnalisé de base',
+                        'Suivi quotidien',
+                        'Accès limité aux recettes',
+                        '1 ajustement par mois',
                     ]}
-                    btnText='Essayer gratuitement'
+                    btnText='Commencer gratuitement'
                     btnAction={() => {}}
                     isFree
                 />
                 <SubscriptionCard
-                    title='Gratuit'
-                    information='Gratuit'
+                    title='Essentiel'
+                    information='Populaire'
                     price={9}
-                    comment='Testez la plateforme gratuitement'
+                    comment='Pour des résultats durables'
                     canDo={[
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
+                        'Plan 100% personnalisé',
+                        'Ajustements hebdomadaires',
+                        'Toutes les recettes',
+                        'Programmes sportifs adaptés',
+                        'Support par email',
                     ]}
-                    btnText='Essayer gratuitement'
+                    btnText='Essayer 1 mois gratuit'
                     btnAction={() => {}}
                 />
                 <SubscriptionCard
-                    title='Gratuit'
-                    information='Gratuit'
-                    price={99}
-                    comment='Testez la plateforme gratuitement'
+                    title='Annuel'
+                    information='-30%'
+                    price={75}
+                    comment='Le meilleur rapport qualité-prix'
                     canDo={[
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
-                        'Accès aux fonctionnalités de base',
+                        'Tout le plan Essentiel',
+                        '2 mois offerts',
+                        'Accès prioritaire aux nouveautés',
+                        'Support prioritaire',
                     ]}
-                    btnText='Essayer gratuitement'
+                    btnText='Économiser 33€'
                     btnAction={() => {}}
                 />
             </div>

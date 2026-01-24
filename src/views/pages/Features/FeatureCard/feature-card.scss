@@ -1,0 +1,41 @@
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+
+.feature-card {
+    height: 100%;
+    gap: space(4);
+    padding: space(4);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: var(--border-tonic);
+    @include flex(flex-start, flex-start, column);
+
+    &__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--border-radius);
+        background-color: var(--background-tonic);
+        @include flex(center, center);
+
+        svg {
+            width: 24px;
+            height: 24px;
+            color: var(--tonic);
+        }
+    }
+
+    &__content {
+        gap: space(2);
+        @include flex(flex-start, flex-start, column);
+    }
+
+    &__title {
+        @include typography(little-title);
+    }
+
+    &__description {
+        @include typography(paragraph);
+        line-height: 1.5;
+    }
+}

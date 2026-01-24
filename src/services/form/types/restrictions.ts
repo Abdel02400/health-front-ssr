@@ -1,5 +1,5 @@
-export type UseRestrictionsRefType = HTMLInputElement;
-export type UseRestrictionsRefArrayType = (HTMLInputElement | null)[];
+export type UseRestrictionsRefType = HTMLInputElement | HTMLTextAreaElement;
+export type UseRestrictionsRefArrayType = (HTMLInputElement | HTMLTextAreaElement | null)[];
 export type RestrictionOptions = {
     pattern?: string;
     mask?: string;

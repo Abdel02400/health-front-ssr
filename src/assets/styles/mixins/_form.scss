@@ -19,6 +19,12 @@
     }
 }
 
+@mixin textarea {
+    font-family: $font-base;
+    font-weight: $font-weight-regular;
+    font-size: $input-text-size;
+}
+
 @mixin error-message {
     font-family: $font-base;
     font-weight: $font-weight-bold;
@@ -29,6 +35,8 @@
 @mixin form($type) {
     @if $type == 'input-text' {
         @include input-text;
+    } @else if $type == 'textarea' {
+        @include textarea;
     } @else if $type == 'error-message' {
         @include error-message;
     } @else if $type == 'password-strength' {
