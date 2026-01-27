@@ -1,46 +1,19 @@
-import type { ReactElement } from 'react';
-import { useMemo } from 'react';
-import { useIntersectionObserver } from '@client-hooks/useIntersectionObserver';
-import { splitWords } from '@client-utils/string';
-import { clsx } from '@client-utils/clsx';
-import { useCssVariable } from '@client-hooks/useCssVariable';
-import { isEmpty } from '@client-utils/value';
+import type { PropsWithChildren, ReactElement } from 'react';
+import AnimatedReveal from '@client-components/AnimatedReveal/AnimatedReveal';
 import './title.scss';
 
-type TitleProps = {
-    text: string;
-    isAnimated?: boolean;
-};
+type TitleProps = PropsWithChildren<{
+    eyebrow?: ReactElement;
+}>;
 
-function Title({ text, isAnimated = false }: TitleProps): ReactElement {
-    const { ref, isVisible } = useIntersectionObserver<HTMLHeadingElement>();
-    const animationDuration = useCssVariable('--title-animation-duration', 600);
-
-    const words = useMemo(() => {
-        if (!isAnimated || isEmpty(text)) return [];
-        return splitWords(text);
-    }, [text, isAnimated]);
-
-    const animatedText = useMemo(() => {
-        if (!isAnimated || isEmpty(text)) return text;
-
-        const delayStep = Math.round(animationDuration / words.length);
-
-        return words.map((word, index) => (
-            <span
-                key={`${word}-${index}`}
-                className={clsx('title__word', isVisible && 'title__word--visible')}
-                style={{ animationDelay: `${index * delayStep}ms` }}
-            >
-                {word}{' '}
-            </span>
-        ));
-    }, [isAnimated, isVisible, text, words, animationDuration]);
-
+function Title({ eyebrow, children }: TitleProps): ReactElement {
     return (
-        <h2 ref={ref} className={clsx('title', isVisible && 'title--visible')}>
-            {animatedText}
-        </h2>
+        <AnimatedReveal>
+            <h2 className='title'>
+                {eyebrow && (<p className='title__eyebrow'>{eyebrow}</p>)}
+                {children}
+            </h2>
+        </AnimatedReveal>
     );
 }
 

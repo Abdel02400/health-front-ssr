@@ -4,10 +4,10 @@
     box-sizing: border-box;
 }
 
-html:not(.ready) *,
-html:not(.ready) *::before,
-html:not(.ready) *::after {
-  transition: none !important;
+html:not([data-ready]) *,
+html:not([data-ready]) *::before,
+html:not([data-ready]) *::after {
+    transition: none !important;
 }
 
 body {

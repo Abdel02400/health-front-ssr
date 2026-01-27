@@ -16,9 +16,23 @@
     --background-modal: #0000007F;
     --background-skeleton: #E0E0E0;
     --background-linear: linear-gradient(90deg, var(--tonic) 0%,var(--pink) 50%, var(--orange) 100%);
-    --backdrop-filter: blur(12px);
+    --background-image-linear: linear-gradient(90deg, rgba(124, 58, 237, 0.2) 0%, rgba(236, 72, 153, 0.2) 50%, rgba(249, 115, 22, 0.2) 100%);
+    --filter: blur(12px);
 
-    --header-box-shadow: 0 16px 32px -16px rgba(0, 0, 0, .1), 0 0 0 1px rgba(0, 0, 0, .1);
+    &[data-theme="dark"] {
+        --background: #0a0a0a;
+        --background-tonic: #7C3AED33;
+        --background-tonic-light: #7C3AED40;
+        --background-grey: #1a1a1a;
+        --background-skeleton: #2a2a2a;
+
+        --header-box-shadow: 0 16px 32px -16px rgba(255, 255, 255, .3), 0 0 0 1px rgba(255, 255, 255, .1);
+        --box-shadow: 0px 0.8px 2px rgba(0, 0, 0, .1), 0px 2.7px 6.7px rgba(0, 0, 0, .15), 0px 12px 30px rgba(0, 0, 0, .2);
+
+        --text-secondary-color: #FFF;
+    }
+
+    --header-box-shadow: 0 16px 32px -16px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
     --box-shadow: 0px 0.8px 2px rgba(0, 0, 0, .032), 0px 2.7px 6.7px rgba(0, 0, 0, .048), 0px 12px 30px rgba(0, 0, 0, .08);
     --border-grey: 1px solid var(--grey);
     --border-tonic: 1px solid var(--tonic);
@@ -28,10 +42,17 @@
     --orange: #F97316;
     --grey: #E6E8EA;
     --error: #FF5A64;
+    --text-color: #77808D;
+    --text-secondary-color: #000;
+
+
     --text-secondary: #77808D;
     --text-light: #FFF;
     --text-dark: #000;
 
+    --default-animation-duration: 500ms;
+    --default-transition-duration: 500ms;
+    --animated-title-letter-animation-duration: 500ms;
     --modal-animation: 200ms;
     --animated-reveal-duration: 600ms;
 

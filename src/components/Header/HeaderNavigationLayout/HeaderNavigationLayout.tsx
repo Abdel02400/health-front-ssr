@@ -3,6 +3,7 @@ import { NavLink } from 'react-router';
 import LogoIcon from '@client-components/icons/LogoIcon';
 import { routePath } from '@client-router/routePath';
 import { useScreenSize } from '@client-hooks/useScreenSize';
+import ThemeSwitcher from '@client-components/ThemeSwitcher/ThemeSwitcher';
 import './header-navigation-layout.scss';
 
 function HeaderNavigationLayout(): ReactElement {
@@ -20,6 +21,7 @@ function HeaderNavigationLayout(): ReactElement {
                     <li><NavLink className='header-navigation-layout__item' to={routePath('contact')} end>Contact</NavLink></li>
                 </ul>
             )}
+            <ThemeSwitcher />
         </nav>
     );
 }

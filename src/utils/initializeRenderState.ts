@@ -3,8 +3,6 @@ export const initializeRenderState = async () => {
 
     requestAnimationFrame(() => {
         if (import.meta.env.DEV) document.querySelector('[data-dev-fouc]')?.remove();
-        requestAnimationFrame(() => {
-            document.documentElement.classList.add('ready');
-        });
+        requestAnimationFrame(() => document.documentElement.setAttribute('data-ready', ''));
     });
 };

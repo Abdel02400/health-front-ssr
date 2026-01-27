@@ -2,13 +2,14 @@
 
 .animated-reveal {
     opacity: 0;
-    filter: blur(12px);
+    filter: var(--filter);
     transform: translateY(space(3));
     transition-property: opacity, filter, transform;
     transition-timing-function: ease-out;
+    transition-duration: var(--default-transition-duration);
     will-change: opacity, filter, transform;
 
-    &--visible {
+    &.animated-reveal--visible {
         opacity: 1;
         filter: blur(0);
         transform: translateY(0);

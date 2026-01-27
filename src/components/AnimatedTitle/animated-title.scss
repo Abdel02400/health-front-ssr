@@ -1,0 +1,33 @@
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+
+.animated-title {
+    @include typography(animated-title);
+
+    .animated-title__word {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .animated-title__letter {
+        display: inline-block;
+        opacity: 0;
+        filter: var(--filter);
+        transform: translateY(space(2));
+        will-change: opacity, filter, transform;
+        animation: letter-reveal var(--animated-title-letter-animation-duration) ease-out forwards;
+    }
+}
+
+@keyframes letter-reveal {
+    from {
+        opacity: 0;
+        filter: var(--filter);
+        transform: translateY(space(2));
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}

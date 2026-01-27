@@ -1,5 +1,6 @@
 import { injectCriticalStyle } from '@shared-ssr/head/injectCriticalStyle';
 import { injectDevFoucStyle } from '@shared-ssr/head/injectDevFoucStyle';
+import { injectThemeScript } from '@shared-ssr/head/injectThemeScript';
 import { injectRouteAssets } from '@shared-ssr/head/injectRouteAssets';
 import { ENV } from '@server-config/env';
 import type { RouteAssetsType } from '@server-types/route';
@@ -7,7 +8,10 @@ import type { RouteAssetsType } from '@server-types/route';
 export type CreateHeadHtmlFunction = (nonce: string, routeAssets: RouteAssetsType | null) => string;
 
 export const createHeadHtml: CreateHeadHtmlFunction = (nonce, routeAssets) => {
-    const parts = [injectCriticalStyle(nonce)];
+    const parts = [
+        injectCriticalStyle(nonce),
+        injectThemeScript(nonce)
+    ];
 
     if (!ENV.isProduction) parts.push(injectDevFoucStyle(nonce));
     if (routeAssets) parts.push(injectRouteAssets(nonce, routeAssets));

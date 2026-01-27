@@ -13,9 +13,10 @@ import { required } from '@client-form/validators/required';
 import { email } from '@client-form/validators/email';
 import { ALPHANUMERIC_32, EMAIL_180 } from '@client-form/constants/restrictions';
 import { CONTACT_SUBJECT_LIST } from '@client-form/constants/contact';
+import SelectField from '@client-components/forms/SelectField/SelectField';
+import ListIcon from '@client-components/icons/ListIcon';
 import type { ContactDTO } from '@client-dtos/contact/ContactDTO';
 import './contact-form.scss';
-import SelectField from '@client-components/forms/SelectField/SelectField';
 
 function ContactForm(): ReactElement {
     const formMethods = useAppForm<ContactDTO>();
@@ -58,6 +59,7 @@ function ContactForm(): ReactElement {
                 <SelectField
                     fieldConfig={fieldConfig('subject', [required()])}
                     defaultLabel='Sélectionnez un sujet'
+                    icon={<ListIcon />}
                     items={[...CONTACT_SUBJECT_LIST]}
                 />
                 <TextAreaField
@@ -69,6 +71,7 @@ function ContactForm(): ReactElement {
                 <CheckboxField fieldConfig={fieldConfig('consent', [required()])}>
                     J’accepte que mes données soient utilisées pour me recontacter.
                 </CheckboxField>
+                <button type="submit">submit</button>
             </fetcher.Form>
         </FormProvider>
     );

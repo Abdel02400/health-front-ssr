@@ -2,15 +2,6 @@
 @use 'functions/spacing' as *;
 @use 'variables/spacing-shape' as *;
 
-.App {
-    min-height: 100vh;
-    @include flex(space-between, stretch, column);
-
-    @media only screen and (min-width: $large-breakpoint) {
-        @include flex(flex-start, stretch, column);
-    }
-}
-
 .icon {
     @include flex();
 

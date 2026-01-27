@@ -1,6 +1,6 @@
 import { type ReactElement, useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@client-store/hook';
-import { setAuthModal } from '@client-store/slices/authSlice';
+import { setAuthModal } from '@client-store/slices/auth/auth';
 import Modal from '@client-components/Modal/Modal';
 import { AUTH_MODAL_MODE } from '@client-auth/types/auth';
 

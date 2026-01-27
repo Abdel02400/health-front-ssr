@@ -1,6 +1,8 @@
 @use 'functions/spacing' as *;
 @use 'mixins/flex' as *;
 
+$header-padding-top: space(2);
+
 .header {
     position: sticky;
     top: 0;
@@ -9,10 +11,25 @@
 
     .header__content {
         gap: space(2);
-        padding: space(2) space(4);
-        backdrop-filter: var(--backdrop-filter);
+        padding: $header-padding-top space(4);
         border-radius: var(--border-radius-rounded);
         box-shadow: var(--header-box-shadow);
+        transform: translateY(calc(-200% - $header-padding-top));
         @include flex(flex-start, center);
+
+        &.header__content--visible {
+            animation: header-slide-down var(--default-animation-duration) ease-in-out forwards;
+        }
+    }
+}
+
+@keyframes header-slide-down {
+    99% {
+        transform: translateY(0);
+        backdrop-filter: none;
+    }
+    100% {
+        transform: translateY(0);
+        backdrop-filter: var(--filter);
     }
 }

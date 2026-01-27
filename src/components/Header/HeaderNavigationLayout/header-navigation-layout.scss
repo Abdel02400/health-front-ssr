@@ -7,10 +7,9 @@
 .header-navigation-layout {
     flex: 1;
     gap: space(2);
-    @include flex();
+    @include flex(flex-start, center);
 
     .header-navigation-layout__logo {
-        @include flex();
         width: 100px;
 
         @media only screen and (min-width: $small-breakpoint) {
@@ -38,7 +37,7 @@
             }
 
             &:hover:not(.active) {
-                color: var(--text-dark);
+                color: var(--text-secondary-color);
             }
         }
     }

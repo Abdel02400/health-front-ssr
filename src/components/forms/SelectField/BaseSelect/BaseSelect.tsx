@@ -3,9 +3,10 @@ import type { Path, FieldValues, Noop, RefCallBack } from 'react-hook-form';
 import { useKeyboardNavigation } from '@client-hooks/useKeyboardNavigation';
 import { convertNameToId } from '@client-utils/string';
 import { clsx } from '@client-utils/clsx';
+import { isEmpty } from '@client-utils/value';
+import ArrowDownIcon from '@client-components/icons/ArrowDownIcon';
 import type { ItemListType } from '@client-form/types/form';
 import './base-select.scss';
-import { isEmpty } from '@client-utils/value';
 
 type BaseSelectProps<T extends FieldValues, V = string> = {
     name: Path<T>,
@@ -15,6 +16,7 @@ type BaseSelectProps<T extends FieldValues, V = string> = {
     list: ItemListType<V>[];
     fieldRef: RefCallBack;
     defaultLabel: string;
+    icon: ReactElement;
 };
 
 function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T, V>): ReactElement {
@@ -25,7 +27,8 @@ function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T,
         value,
         list,
         fieldRef,
-        defaultLabel
+        defaultLabel,
+        icon
     } = props;
 
     const [open, setOpen] = useState<boolean>(false);
@@ -87,11 +90,12 @@ function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T,
                 onClick={toggleSelect}
                 onKeyDown={handleKeyDown}
             >
+                {icon}
                 <input
                     type="text"
                     id={convertNameToId(name)}
                     name={name}
-                    value={displayValue}
+                    value={String(value ?? '')}
                     readOnly
                     ref={(e) => {
                         fieldRef(e);
@@ -107,6 +111,7 @@ function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T,
                     }}
                 />
                 {!isEmpty(displayValue) && <span className="current-value">{displayValue}</span>}
+                <ArrowDownIcon />
             </button>
             {open && (
                 <ul className='base-select__items'>

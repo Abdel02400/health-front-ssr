@@ -7,11 +7,6 @@
     gap: space(10);
     @include flex(flex-start, center, column);
 
-    .title {
-        text-align: center;
-        @include typography(text-gradient);
-    }
-
     .how-it-work-section__steps {
         width: 100%;
         display: grid;

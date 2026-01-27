@@ -1,0 +1,39 @@
+@use 'mixins/flex' as *;
+
+$transition-duration: 0.3s ease;
+
+.theme-switcher {
+    height: fit-content;
+
+    .icon {
+        cursor: pointer;
+
+        .sun-body,
+        .sun-rays,
+        .moon-mask__circle {
+            transition: transform $transition-duration,
+                opacity $transition-duration,
+                cx $transition-duration;
+        }
+
+        .sun-body,
+        .sun-rays {
+            transform-origin: center;
+        }
+    }
+
+    &.theme-switcher--dark {
+        .sun-body {
+            transform: scale(1.5);
+        }
+
+        .sun-rays {
+            opacity: 0;
+            transform: rotate(25deg) scale(0);
+        }
+
+        .moon-mask__circle {
+            cx: 15;
+        }
+    }
+}

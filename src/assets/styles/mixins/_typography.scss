@@ -10,13 +10,26 @@
 @mixin link {
     font-family: $font-base;
     font-weight: $font-weight-medium;
-    color: var(--text-secondary);
+    color: var(--text-color);
+}
+
+@mixin animated-title {
+    font-family: $font-base;
+    font-weight: $font-weight-bold;
+    font-size: $animated-title-text-mobile-size;
+    color: var(--text-secondary-color);
+    line-height: 1.3;
+
+    @media only screen and (min-width: $medium-breakpoint) {
+        font-size: $animated-title-text-size;
+    }
 }
 
 @mixin title {
     font-family: $font-base;
     font-weight: $font-weight-bold;
     font-size: $title-text-mobile-size;
+    color: var(--text-secondary-color);
     line-height: 1.3;
 
     @media only screen and (min-width: $medium-breakpoint) {
@@ -38,7 +51,9 @@
 @mixin paragraph {
     font-family: $font-base;
     font-weight: $font-weight-regular;
+    font-size: $paragraph-text-size;
     color: var(--text-secondary);
+    line-height: 1.3;
 }
 
 @mixin button {
@@ -72,6 +87,8 @@
         @include default;
     } @else if $type == 'link' {
         @include link;
+    } @else if $type == 'animated-title' {
+        @include animated-title;
     } @else if $type == 'title' {
         @include title;
     } @else if $type == 'paragraph' {

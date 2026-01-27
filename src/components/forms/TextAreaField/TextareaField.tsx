@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactElement } from 'react';
+import { useRef, type ReactElement } from 'react';
 import { useFormContext, type FieldValues } from 'react-hook-form';
 import ErrorMessage from '@client-components/forms/ErrorMessage/ErrorMessage';
 import { clsx } from '@client-utils/clsx';
@@ -35,17 +35,6 @@ function TextAreaField<T extends FieldValues>(props: TextAreaFieldProps<T>): Rea
     const { ref, ...rest } = register(fieldConfig.name, fieldConfig.options);
     useRestrictions(textareaRef, restrictions);
 
-    const resizeTextarea = () => {
-        if (textareaRef.current === null) return;
-        textareaRef.current.style.height = '1px';
-        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', resizeTextarea);
-        return () => window.removeEventListener('resize', resizeTextarea);
-    }, []);
-
     return (
         <div className={clsx('textarea-field', validationClass && validationClass)}>
             <div className="textarea-field__wrapper">
@@ -56,7 +45,6 @@ function TextAreaField<T extends FieldValues>(props: TextAreaFieldProps<T>): Rea
                         ref(e);
                         textareaRef.current = e;
                     }}
-                    onInput={resizeTextarea}
                     id={convertNameToId(fieldConfig.name)}
                     placeholder={placeholder}
                     disabled={disabled}

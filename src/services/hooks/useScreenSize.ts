@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useCssVariable } from './useCssVariable';
+import { useCssVariable } from '@client-hooks/useCssVariable';
 
 type ScreenSize = {
     isLargeSize: boolean;
@@ -40,9 +40,7 @@ export const useScreenSize = (): ScreenSize => {
 
         const update = () => setSize(compute());
         update();
-
         queries.forEach(q => q.addEventListener('change', update));
-
         return () => {
             queries.forEach(q => q.removeEventListener('change', update));
         };

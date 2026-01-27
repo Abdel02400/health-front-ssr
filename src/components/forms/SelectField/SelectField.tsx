@@ -9,24 +9,24 @@ import type { FieldConfig, ItemListType } from '@client-form/types/form';
 type SelectFieldProps<T extends FieldValues, K extends Path<T>> = {
     items: ItemListType<PathValue<T, K>>[];
     fieldConfig: FieldConfig<T> & { name: K };
+    icon: ReactElement;
     defaultLabel: string;
 };
 
 function SelectField<T extends FieldValues, K extends Path<T>>(props: SelectFieldProps<T, K>): ReactElement {
-    const { items, fieldConfig, defaultLabel } = props;
+    const { items, fieldConfig, defaultLabel, icon } = props;
     const { control, setValue } = useFormContext<T>();
     const { validationClass, error } = useValidationForm<T>(fieldConfig.name);
 
     const handleSelect = (item: ItemListType<PathValue<T, K>>) => {
-        setValue(fieldConfig.name, item.value, { shouldTouch: true });
+        setValue(fieldConfig.name, item.value, { shouldTouch: true, shouldValidate: true });
     };
 
     const { field: { onBlur, name, value, ref } } = useController<T, K>({
         name: fieldConfig.name,
         control,
-        rules: {
-            ...fieldConfig.options,
-        },
+        defaultValue: undefined,
+        rules: { ...fieldConfig.options },
     });
 
     return (
@@ -41,6 +41,7 @@ function SelectField<T extends FieldValues, K extends Path<T>>(props: SelectFiel
                 value={value}
                 list={items}
                 fieldRef={ref}
+                icon={icon}
                 defaultLabel={defaultLabel}
             />
             {error && <ErrorMessage>{error.message}</ErrorMessage>}

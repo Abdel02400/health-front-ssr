@@ -11,7 +11,7 @@ const initialState: AuthStateType = {
     isModalOpen: false
 };
 
-const authSlice = createSlice({
+const auth = createSlice({
     name: 'auth',
     initialState,
     reducers: {
@@ -27,6 +27,6 @@ const authSlice = createSlice({
 export const {
     setAuthStatus,
     setAuthModal
-} = authSlice.actions;
+} = auth.actions;
 
-export default authSlice.reducer;
+export default auth.reducer;

@@ -21,7 +21,5 @@ const loadLazyRoutes = async () => {
 
 export const createRouter = async () => {
     await loadLazyRoutes();
-    return createBrowserRouter(routes, {
-        hydrationData: window.__staticRouterHydrationData
-    });
+    return createBrowserRouter(routes, { hydrationData: window.__staticRouterHydrationData });
 };

@@ -14,7 +14,7 @@ type UseIntersectionObserverReturn<T extends HTMLElement> = {
 export const useIntersectionObserver = <T extends HTMLElement = HTMLDivElement>(
     options: UseIntersectionObserverOptions = {}
 ): UseIntersectionObserverReturn<T> => {
-    const { threshold = 0.3, rootMargin = '0px', triggerOnce = true } = options;
+    const { threshold = 0.1, rootMargin = '0px', triggerOnce = true } = options;
     const ref = useRef<T | null>(null);
     const [isVisible, setIsVisible] = useState(false);
 
