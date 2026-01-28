@@ -1,0 +1,7 @@
+@use 'functions/spacing' as *;
+
+.form-actions {
+    .error-message {
+        margin-bottom: space(1);
+    }
+}

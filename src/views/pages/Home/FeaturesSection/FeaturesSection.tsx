@@ -1,17 +1,23 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
+import { useScreenSize } from '@client-hooks/useScreenSize';
 import Title from '@client-components/Title/Title';
-import AnimatedReveal from '@client-components/AnimatedReveal/AnimatedReveal';
-import FeatureCard from './FeatureCard/FeatureCard';
+import FireIcon from '@client-components/icons/FireIcon';
 import TargetIcon from '@client-components/icons/TargetIcon';
 import SyncIcon from '@client-components/icons/SyncIcon';
 import RestaurantIcon from '@client-components/icons/RestaurantIcon';
 import FitnessIcon from '@client-components/icons/FitnessIcon';
 import HeartIcon from '@client-components/icons/HeartIcon';
 import TouchIcon from '@client-components/icons/TouchIcon';
-import { useScreenSize } from '@client-hooks/useScreenSize';
-import './features.scss';
+import FeatureCard from './FeatureCard/FeatureCard';
+import './features-section.scss';
 
-const features = [
+type FeatureType = {
+    icon: ReactNode;
+    title: string;
+    description: string;
+};
+
+const FEATURES = [
     {
         icon: <TargetIcon />,
         title: 'Plan personnalisé',
@@ -42,35 +48,31 @@ const features = [
         title: 'Sans culpabilité',
         description: "Pas de jugement, pas de pression. Tu avances à ton rythme, on t'accompagne.",
     },
-];
+] as const satisfies readonly FeatureType[];
 
-function Features(): ReactElement {
-    const { isLargeSize } = useScreenSize();
-    const baseDelay = isLargeSize ? 200 : 0;
+function FeaturesSection(): ReactElement {
+    const { isLargeSize, isMediumSize } = useScreenSize();
+    const columns = isLargeSize ? 3 : isMediumSize ? 2 : 1;
+    const baseDelay = columns > 1 ? 200 : 0;
 
     return (
-        <div className='features container'>
-            <div className='features__header'>
-                <Title text='Ce que tu obtiens avec Health' isAnimated />
-                <AnimatedReveal delay={400}>
-                    <p className='features__description'>
-                        Une application simple qui fait le travail pour toi. Tu suis, elle s'adapte.
-                    </p>
-                </AnimatedReveal>
-            </div>
-            <div className='features__list'>
-                {features.map((feature, index) => (
-                    <AnimatedReveal key={feature.title} delay={baseDelay * index}>
-                        <FeatureCard
-                            icon={feature.icon}
-                            title={feature.title}
-                            description={feature.description}
-                        />
-                    </AnimatedReveal>
+        <div className='features-section container'>
+            <Title eyebrow={<><FireIcon /> Avantages</>}>
+                Tout ce dont tu as besoin pour réussir
+            </Title>
+            <div className='features-section__list'>
+                {FEATURES.map((feature, index) => (
+                    <FeatureCard
+                        key={feature.title}
+                        icon={feature.icon}
+                        title={feature.title}
+                        description={feature.description}
+                        delay={baseDelay * (index % columns)}
+                    />
                 ))}
             </div>
         </div>
     );
 }
 
-export default Features;
+export default FeaturesSection;

@@ -3,12 +3,19 @@
 @use 'mixins/typography' as *;
 
 .subscription-card {
+    height: 100%;
     padding: space(4);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     gap: space(4);
     border: var(--border-tonic);
+    transition: transform var(--default-transition-duration) ease-in-out;
     @include flex(flex-start, stretch, column);
+
+    &:hover {
+        background: var(--background-card);
+        transform: translateY(space(-1));
+    }
 
     &.subscription-card--free {
         border: var(--border-grey);
@@ -18,10 +25,7 @@
         @include flex(space-between, center);
 
         .subscription-card__header-title {
-            @include typography(paragraph);
-            color: var(--text-dark);
-            font-size: 18px;
-            font-weight: 700;
+            @include typography(little-title);
         }
 
         .subscription-card__header-information {
@@ -34,21 +38,19 @@
     }
 
     .subscription-card__price {
-        @include typography(paragraph);
-        font-size: 48px;
-        font-weight: 700;
-        color: var(--text-dark);
+        @include typography(title);
     }
 
     .subscription-card__comment {
         @include typography(paragraph);
     }
 
-    .subscription-card__items {
+    .subscription-card__features {
+        flex: 1;
         gap: space(2);
         @include flex(flex-start, stretch, column);
 
-        .subscription-card__item {
+        .subscription-card__feature {
             gap: space(2);
             padding: space(2) 0;
             border-bottom: var(--border-grey);

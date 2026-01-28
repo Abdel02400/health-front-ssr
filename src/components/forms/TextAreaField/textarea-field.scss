@@ -23,7 +23,7 @@
         transition: border-color 0.2s ease;
 
         &:focus-within {
-            border: var(--border-tonic);
+            box-shadow: var(--box-shadow-tonic);
         }
 
         textarea {

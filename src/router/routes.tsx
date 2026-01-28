@@ -10,10 +10,8 @@ const lazyRoute = (importFn: () => Promise<{ default: ComponentType }>) => async
 
 const pageImports: Record<RoutePathType, () => Promise<{ default: ComponentType }>> = {
     '/': () => import('@client-pages/Home/Home'),
-    '/features': () => import('@client-pages/Features/Features'),
     '/subscriptions': () => import('@client-pages/Subscriptions/Subscriptions'),
-    '/about': () => import('@client-pages/About/About'),
-    '/contact': () => import('@client-pages/Contact/Contact'),
+    '/contact': () => import('@client-pages/Contact/Contact')
 };
 
 export const routes: RouteObject[] = [

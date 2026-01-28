@@ -64,19 +64,21 @@ export const useRestrictions = (
     useEffect(() => {
         if (!ref.current) return;
 
-        const elements = Array.isArray(ref.current) ? ref.current.filter(Boolean) : [ref.current];
+        const elements: UseRestrictionsRefType[] = Array.isArray(ref.current)
+            ? ref.current.filter((el): el is UseRestrictionsRefType => el !== null)
+            : [ref.current];
 
         elements.forEach((el) => {
-            el?.addEventListener('keydown', onKey);
-            el?.addEventListener('beforeinput', onKey);
-            el?.addEventListener('paste', onPaste);
+            el.addEventListener('keydown', onKey as EventListener);
+            el.addEventListener('beforeinput', onKey as EventListener);
+            el.addEventListener('paste', onPaste as EventListener);
         });
 
         return () => {
             elements.forEach((el) => {
-                el?.removeEventListener('keydown', onKey);
-                el?.removeEventListener('beforeinput', onKey);
-                el?.removeEventListener('paste', onPaste);
+                el.removeEventListener('keydown', onKey as EventListener);
+                el.removeEventListener('beforeinput', onKey as EventListener);
+                el.removeEventListener('paste', onPaste as EventListener);
             });
         };
     }, [ref]);

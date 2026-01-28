@@ -4,20 +4,19 @@
 @use 'variables/spacing-shape' as *;
 
 .subscriptions {
+    padding-top: space(10);
+    padding-bottom: space(10);
     gap: space(10);
     @include flex(flex-start, center, column);
 
-    &__header {
+    .subscriptions__header {
         text-align: center;
         max-width: 600px;
-
-        .title {
-            @include typography(text-gradient);
-        }
+        gap: space(4);
+        @include flex(flex-start, center, column);
     }
 
-    &__description {
-        margin-top: space(4);
+    .subscriptions__description {
         @include typography(paragraph);
     }
 

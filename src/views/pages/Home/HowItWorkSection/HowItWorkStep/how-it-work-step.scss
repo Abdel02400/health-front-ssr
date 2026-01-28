@@ -1,34 +1,99 @@
 @use 'mixins/flex' as *;
 @use 'mixins/typography' as *;
+@use 'variables/spacing-shape' as *;
 @use 'functions/spacing' as *;
 
 .how-it-work-step {
-    height: 100%;
-    gap: space(6);
-    padding: space(4);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    border: var(--border-tonic);
-    @include flex(flex-start, center, column);
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    align-items: stretch;
 
-    .how-it-work-step__illustration {
-        width: auto;
-        height: 150px;
-    }
-
-    .how-it-work-step__content {
-        flex: 1;
+    .how-it-work-step__card {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
         gap: space(4);
-        text-align: center;
-        @include flex(space-between, center, column);
+        padding: space(4);
+        background: var(--background-card);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        @include flex(flex-start, flex-start, column);
 
-        .how-it-work-step__content-title {
-            @include typography(little-title);
-            @include typography(text-gradient);
+        .icon {
+            padding: space(2);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            background-color: var(--background-grey);
         }
 
-        .how-it-work-step__content-description {
+        .how-it-work-step__title {
+            @include typography(little-title);
+        }
+
+        .how-it-work-step__description {
             @include typography(paragraph);
+        }
+    }
+
+    .how-it-work-step__timeline {
+        grid-column: 1;
+        grid-row: 1;
+        height: 100%;
+        position: relative;
+        @include flex(center, flex-start);
+
+        .how-it-work-step__indicator {
+            position: relative;
+            margin-top: space(2);
+            z-index: 2;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--background);
+            border: 2px solid var(--grey);
+            transition: all var(--default-transition-duration) ease-out;
+            @include typography(paragraph);
+            @include flex(center, center);
+
+            @media only screen and (min-width: $medium-breakpoint) {
+                width: 40px;
+                height: 40px;
+            }
+
+            &.how-it-work-step__indicator--completed {
+                background: var(--tonic);
+                border-color: var(--tonic);
+
+                .icon svg{
+                    width: 16px;
+                    height: 16px;
+                    fill: var(--white);
+                }
+
+                @media only screen and (min-width: $small-breakpoint) {
+                    .icon svg{
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: $medium-breakpoint) {
+        .how-it-work-step__card {
+            grid-column: 1;
+        }
+
+        .how-it-work-step__timeline {
+            grid-column: 2;
+        }
+
+        &:nth-child(odd) {
+            .how-it-work-step__card {
+                grid-column: 3;
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ import { useFetcher } from 'react-router';
 import { FormProvider } from 'react-hook-form';
 import { useAppForm } from '@client-form/hooks/useAppForm';
 import { useFieldConfig } from '@client-form/hooks/useFieldConfig';
-import Title from '@client-components/Title/Title';
 import InputField from '@client-components/forms/InputField/InputField';
 import TextAreaField from '@client-components/forms/TextAreaField/TextareaField';
 import CheckboxField from '@client-components/forms/CheckboxField/CheckboxField';
@@ -11,10 +10,12 @@ import PersonIcon from '@client-components/icons/PersonIcon';
 import MailIcon from '@client-components/icons/MailIcon';
 import { required } from '@client-form/validators/required';
 import { email } from '@client-form/validators/email';
+import { minLength } from '@client-form/validators/length';
 import { ALPHANUMERIC_32, EMAIL_180 } from '@client-form/constants/restrictions';
 import { CONTACT_SUBJECT_LIST } from '@client-form/constants/contact';
 import SelectField from '@client-components/forms/SelectField/SelectField';
 import ListIcon from '@client-components/icons/ListIcon';
+import FormActions from '@client-components/forms/FormActions/FormActions';
 import type { ContactDTO } from '@client-dtos/contact/ContactDTO';
 import './contact-form.scss';
 
@@ -36,10 +37,9 @@ function ContactForm(): ReactElement {
     return (
         <FormProvider {...formMethods}>
             <fetcher.Form onSubmit={handleSubmit(submit)}>
-                <Title text='Nous contacter' />
                 <div className='contact-form__fields'>
                     <InputField
-                        fieldConfig={fieldConfig('name', [required()])}
+                        fieldConfig={fieldConfig('name', [required(), minLength(5)])}
                         placeholder='Votre nom'
                         icon={<PersonIcon />}
                         autoComplete='name'
@@ -63,7 +63,7 @@ function ContactForm(): ReactElement {
                     items={[...CONTACT_SUBJECT_LIST]}
                 />
                 <TextAreaField
-                    fieldConfig={fieldConfig('message', [required()])}
+                    fieldConfig={fieldConfig('message', [required(), minLength(5)])}
                     placeholder='Expliquez-nous votre demande, nous vous répondrons rapidement'
                     icon={<MailIcon />}
                     disabled={isLoading}
@@ -71,7 +71,7 @@ function ContactForm(): ReactElement {
                 <CheckboxField fieldConfig={fieldConfig('consent', [required()])}>
                     J’accepte que mes données soient utilisées pour me recontacter.
                 </CheckboxField>
-                <button type="submit">submit</button>
+                <FormActions text='Envoyer' />
             </fetcher.Form>
         </FormProvider>
     );

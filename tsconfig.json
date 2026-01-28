@@ -53,6 +53,7 @@
       "@client-forms/*": ["src/views/forms/*"],
       "@client-dtos/*": ["src/dtos/*"],
       "@client-constants/*": ["src/constants/*"],
+      "@client-types/*": ["src/types/*"],
     }
   },
   "include": [

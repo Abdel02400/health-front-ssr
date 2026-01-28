@@ -41,6 +41,7 @@
     font-family: $font-base;
     font-weight: $font-weight-bold;
     font-size: $little-title-text-mobile-size;
+    color: var(--text-secondary-color);
     line-height: 1.3;
 
     @media only screen and (min-width: $medium-breakpoint) {

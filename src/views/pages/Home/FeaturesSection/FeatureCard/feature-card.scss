@@ -8,34 +8,26 @@
     padding: space(4);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    border: var(--border-tonic);
+    transition: transform var(--default-transition-duration) ease-in-out;
     @include flex(flex-start, flex-start, column);
 
-    &__icon {
-        width: 48px;
-        height: 48px;
+    &:hover {
+        background: var(--background-card);
+        transform: translateY(space(-1));
+    }
+
+    .feature-card__icon {
+        padding: space(2);
         border-radius: var(--border-radius);
         background-color: var(--background-tonic);
         @include flex(center, center);
-
-        svg {
-            width: 24px;
-            height: 24px;
-            color: var(--tonic);
-        }
     }
 
-    &__content {
-        gap: space(2);
-        @include flex(flex-start, flex-start, column);
-    }
-
-    &__title {
+    .feature-card__title {
         @include typography(little-title);
     }
 
-    &__description {
+    .feature-card__description {
         @include typography(paragraph);
-        line-height: 1.5;
     }
 }

@@ -1,23 +1,32 @@
 import { memo, type ReactElement } from 'react';
+import AnimatedReveal from '@client-components/AnimatedReveal/AnimatedReveal';
+import ValidIcon from '@client-components/icons/ValidIcon';
+import { clsx } from '@client-utils/clsx';
 import './how-it-work-step.scss';
 
 type HowItWorkStepProps = {
-    illustrationSrc: string;
-    illustrationAlt: string;
-    stepNumber: number;
+    step: number;
+    icon: ReactElement;
     title: string;
     description: string;
+    isCompleted: boolean;
+    onVisible: () => void;
 }
 
 const HowItWorkStep = memo(function HowItWorkStep(props: HowItWorkStepProps): ReactElement {
-    const { illustrationSrc, illustrationAlt, stepNumber, title, description } = props;
+    const { step, icon, title, description, isCompleted, onVisible } = props;
 
     return (
         <div className='how-it-work-step'>
-            <img className='how-it-work-step__illustration' src={illustrationSrc} alt={illustrationAlt} />
-            <div className='how-it-work-step__content'>
-                <p className='how-it-work-step__content-title'>{stepNumber}. {title}</p>
-                <p className='how-it-work-step__content-description'>{description}</p>
+            <AnimatedReveal className='how-it-work-step__card' onVisible={onVisible}>
+                {icon}
+                <p className='how-it-work-step__title'>{title}</p>
+                <p className='how-it-work-step__description'>{description}</p>
+            </AnimatedReveal>
+            <div className='how-it-work-step__timeline'>
+                <span className={clsx('how-it-work-step__indicator', isCompleted && 'how-it-work-step__indicator--completed')}>
+                    {isCompleted ? <ValidIcon /> : step}
+                </span>
             </div>
         </div>
     );

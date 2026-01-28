@@ -1,0 +1,16 @@
+@use 'variables/form' as *;
+@use 'functions/spacing' as *;
+
+.select-field {
+    position: relative;
+
+    &.#{$field-error} {
+        .base-select {
+            border: 1px solid var(--error);
+        }
+    }
+
+    .error-message {
+        margin-top: space(1);
+    }
+}

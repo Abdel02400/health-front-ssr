@@ -1,0 +1,25 @@
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+
+.value-card {
+    height: 100%;
+    gap: space(4);
+    padding: space(4);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-tonic);
+    transition: transform var(--default-transition-duration) ease-in-out;
+    @include flex(flex-start, flex-start, column);
+
+    &:hover {
+        transform: translateY(space(-1));
+    }
+
+    .value-card__title {
+        @include typography(little-title);
+    }
+
+    .value-card__description {
+        @include typography(paragraph);
+    }
+}

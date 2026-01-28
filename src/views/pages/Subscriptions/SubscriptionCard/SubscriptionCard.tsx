@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 import Button from '@client-components/Button/Button';
 import ValidIcon from '@client-components/icons/ValidIcon';
 import AnimatedReveal from '@client-components/AnimatedReveal/AnimatedReveal';
@@ -9,27 +9,25 @@ type SubscriptionCardProps = {
     title: string;
     price: number;
     comment: string;
-    canDo: string[];
+    features: readonly string[];
     btnText: string;
-    btnAction: () => void;
     information?: string;
     isFree?: boolean;
-}
+    delay?: number;
+};
 
-function SubscriptionCard(props: SubscriptionCardProps): ReactElement {
-    const {
-        title,
-        price,
-        comment,
-        canDo,
-        btnText,
-        btnAction,
-        information = undefined,
-        isFree = false
-    } = props;
-
+const SubscriptionCard = memo(function SubscriptionCard({
+    title,
+    price,
+    comment,
+    features,
+    btnText,
+    information,
+    isFree = false,
+    delay,
+}: SubscriptionCardProps): ReactElement {
     return (
-        <AnimatedReveal>
+        <AnimatedReveal delay={delay}>
             <div className={clsx('subscription-card', isFree && 'subscription-card--free')}>
                 <div className='subscription-card__header'>
                     <h3 className='subscription-card__header-title'>{title}</h3>
@@ -37,18 +35,18 @@ function SubscriptionCard(props: SubscriptionCardProps): ReactElement {
                 </div>
                 <p className='subscription-card__price'>{price}&euro;</p>
                 <p className='subscription-card__comment'>{comment}</p>
-                <ul className='subscription-card__items'>
-                    {canDo.map((item, index) => (
-                        <li key={`${item}-${index}`} className='subscription-card__item'>
+                <ul className='subscription-card__features'>
+                    {features.map((feature) => (
+                        <li key={feature} className='subscription-card__feature'>
                             <ValidIcon />
-                            {item}
+                            {feature}
                         </li>
                     ))}
                 </ul>
-                <Button onClick={btnAction}>{btnText}</Button>
+                <Button>{btnText}</Button>
             </div>
         </AnimatedReveal>
     );
-}
+});
 
 export default SubscriptionCard;

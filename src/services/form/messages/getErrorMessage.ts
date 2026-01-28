@@ -4,6 +4,7 @@ import type { Path } from '@client-form/types/path';
 const errorsMessage = {
     required: 'Ce champ est obligatoire',
     email: 'Merci de renseigner un email valide',
+    minLength: 'La champs doit faire {size} caractères minimum'
 };
 
 export const getErrorMessage = (

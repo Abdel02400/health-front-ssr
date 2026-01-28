@@ -40,6 +40,7 @@ function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T,
     const displayValue = list.find(item => item.value === value)?.display ?? defaultLabel;
 
     const toggleSelect = () => {
+        setPreSelectedItem(undefined);
         selectRef.current?.focus();
         setOpen((prevState) => !prevState);
     };
@@ -86,7 +87,7 @@ function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T,
         <div className='base-select'>
             <button
                 type='button'
-                className='base-select__button'
+                className={clsx('base-select__button', open && 'base-select__button--open')}
                 onClick={toggleSelect}
                 onKeyDown={handleKeyDown}
             >
@@ -111,7 +112,7 @@ function BaseSelect<T extends FieldValues, V = string>(props: BaseSelectProps<T,
                     }}
                 />
                 {!isEmpty(displayValue) && <span className="current-value">{displayValue}</span>}
-                <ArrowDownIcon />
+                <span className='base-select__arrow'><ArrowDownIcon /></span>
             </button>
             {open && (
                 <ul className='base-select__items'>

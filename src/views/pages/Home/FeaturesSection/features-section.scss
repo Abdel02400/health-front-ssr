@@ -1,0 +1,22 @@
+@use 'mixins/flex' as *;
+@use 'functions/spacing' as *;
+@use 'variables/spacing-shape' as *;
+
+.features-section {
+    gap: space(10);
+    @include flex(flex-start, center, column);
+
+    .features-section__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: space(4);
+
+        @media only screen and (min-width: $small-breakpoint) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media only screen and (min-width: $large-breakpoint) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

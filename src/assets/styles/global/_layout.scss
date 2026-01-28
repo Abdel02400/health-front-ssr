@@ -4,10 +4,6 @@
 
 .icon {
     @include flex();
-
-    svg { 
-        width: 100%; 
-    }
 }
 
 img {

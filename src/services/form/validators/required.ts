@@ -12,6 +12,7 @@ export const required = <T extends FieldValues>(message?: string): ValidateRule<
     }
 
     if (
+        value === undefined ||
         value === null ||
         value === false ||
         (typeof value === 'number' && Number.isNaN(value)) ||

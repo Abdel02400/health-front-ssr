@@ -5,6 +5,7 @@ import ErrorMessage from '@client-components/forms/ErrorMessage/ErrorMessage';
 import { clsx } from '@client-utils/clsx';
 import BaseSelect from './BaseSelect/BaseSelect';
 import type { FieldConfig, ItemListType } from '@client-form/types/form';
+import './select-field.scss';
 
 type SelectFieldProps<T extends FieldValues, K extends Path<T>> = {
     items: ItemListType<PathValue<T, K>>[];

@@ -4,6 +4,7 @@
 
 .title {
     gap: space(2);
+    text-align: center;
     @include flex(flex-start, center, column);
     @include typography(title);
 

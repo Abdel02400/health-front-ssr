@@ -1,0 +1,17 @@
+.loader {
+    height: 35px;
+    width: 35px;
+    border-radius: var(--border-radius-rounded);
+    border: 5px solid var(--tonic);
+    border-color: var(--tonic) transparent var(--tonic) var(--tonic);
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}

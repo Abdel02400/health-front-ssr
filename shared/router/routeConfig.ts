@@ -8,9 +8,7 @@ export const routeConfig = {
     },
     pages: {
         home: { path: '/', entry: 'src/views/pages/Home/Home.tsx', index: true },
-        features: { path: '/features', entry: 'src/views/pages/Features/Features.tsx' },
         subscriptions: { path: '/subscriptions', entry: 'src/views/pages/Subscriptions/Subscriptions.tsx' },
-        about: { path: '/about', entry: 'src/views/pages/About/About.tsx' },
         contact: { path: '/contact', entry: 'src/views/pages/Contact/Contact.tsx' },
     },
 } as const satisfies RouteConfigType;

@@ -3,9 +3,7 @@ import { NavLink } from 'react-router';
 import { routePath } from '@client-router/routePath';
 import { useScreenSize } from '@client-hooks/useScreenSize';
 import HomeIcon from '@client-components/icons/HomeIcon';
-import FeaturesIcon from '@client-components/icons/FeaturesIcon';
 import SubscriptionsIcon from '@client-components/icons/SubscriptionsIcon';
-import AboutIcon from '@client-components/icons/AboutIcon';
 import ContactIcon from '@client-components/icons/ContactIcon';
 import './mobile-navigation.scss';
 
@@ -23,18 +21,8 @@ function MobileNavigation(): ReactElement | null {
                     </NavLink>
                 </li>
                 <li className='mobile-navigation__item'>
-                    <NavLink className='mobile-navigation__item-icon' to={routePath('features')} end>
-                        <FeaturesIcon />
-                    </NavLink>
-                </li>
-                <li className='mobile-navigation__item'>
                     <NavLink className='mobile-navigation__item-icon' to={routePath('subscriptions')} end>
                         <SubscriptionsIcon />
-                    </NavLink>
-                </li>
-                <li className='mobile-navigation__item'>
-                    <NavLink className='mobile-navigation__item-icon' to={routePath('about')} end>
-                        <AboutIcon />
                     </NavLink>
                 </li>
                 <li className='mobile-navigation__item'>

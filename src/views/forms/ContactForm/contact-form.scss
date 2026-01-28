@@ -10,4 +10,8 @@ form {
         gap: space(4);
         @include flex();
     }
+
+    .form-actions {
+        width: fit-content;
+    }
 }

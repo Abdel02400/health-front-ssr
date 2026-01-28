@@ -13,7 +13,7 @@ $header-padding-top: space(2);
         gap: space(2);
         padding: $header-padding-top space(4);
         border-radius: var(--border-radius-rounded);
-        box-shadow: var(--header-box-shadow);
+        box-shadow: var(--box-shadow);
         transform: translateY(calc(-200% - $header-padding-top));
         @include flex(flex-start, center);
 

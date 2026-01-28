@@ -4,7 +4,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
 
-    console.log(data);
+    console.info(data);
 
     return { success: true };
 };

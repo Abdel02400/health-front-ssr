@@ -1,0 +1,40 @@
+@use 'mixins/flex' as *;
+@use 'mixins/typography' as *;
+@use 'functions/spacing' as *;
+@use 'variables/spacing-shape' as *;
+
+.about-section {
+    gap: space(10);
+    @include flex(flex-start, center, column);
+
+    .about-section__header {
+        text-align: center;
+        max-width: 800px;
+        gap: space(4);
+        @include flex(flex-start, center, column);
+    }
+
+    .about-section__intro {
+        @include typography(paragraph);
+    }
+
+    .about-section__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: space(6);
+
+        @media only screen and (min-width: $medium-breakpoint) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .about-section__action {
+        text-align: center;
+        gap: space(2);
+        @include flex(flex-start, center, column);
+
+        .about-section__action-text {
+            @include typography(paragraph);
+        }
+    }
+}

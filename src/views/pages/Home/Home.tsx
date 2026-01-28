@@ -1,6 +1,8 @@
 import type { ReactElement } from 'react';
 import HeroSection from './HeroSection/HeroSection';
 import HowItWorkSection from './HowItWorkSection/HowItWorkSection';
+import FeaturesSection from './FeaturesSection/FeaturesSection';
+import AboutSection from './AboutSection/AboutSection';
 import './home.scss';
 
 function Home(): ReactElement {
@@ -8,6 +10,8 @@ function Home(): ReactElement {
         <div className='home'>
             <HeroSection />
             <HowItWorkSection />
+            <FeaturesSection />
+            <AboutSection />
         </div>
     );
 }

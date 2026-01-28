@@ -1,0 +1,20 @@
+@use 'functions/spacing' as *;
+@use 'mixins/typography' as *;
+@use 'mixins/flex' as *;
+
+.separator {
+    width: 100%;
+    margin: space(2) 0;
+    @include flex(flex-start, center);
+
+    .separator__line {
+        flex: 1;
+        height: 1px;
+        background-color: var(--background-grey);
+    }
+
+    .separator__text {
+        padding: 0 space(1);
+        @include typography(text-color);
+    }
+}

@@ -1,19 +1,18 @@
 @use 'functions/spacing' as *;
+@use 'mixins/form' as *;
 @use 'mixins/typography' as *;
 @use 'mixins/flex' as *;
 
-.select-field {
-    position: relative;
-}
-
 .base-select {
+    border-radius: var(--border-radius);
+    background-color: var(--background-grey);
+
     .base-select__button {
         width: 100%;
         position: relative;
-        border-radius: var(--border-radius);
-        background-color: var(--background-grey);
         padding: space(2);
         gap: space(1);
+        border-radius: var(--border-radius);
         @include flex(space-between, center);
 
         input {
@@ -26,7 +25,20 @@
         .current-value {
             flex: 1;
             text-align: left;
-            @include typography(paragraph);
+            color: var(--text-color);
+            @include form(select-current);
+        }
+
+        .base-select__arrow {
+            transition: transform var(--default-transition-duration) ease;
+        }
+
+        &.base-select__button--open {
+            box-shadow: var(--box-shadow-tonic);
+
+            .base-select__arrow {
+                transform: rotate(-180deg);
+            }
         }
     }
 
@@ -38,24 +50,22 @@
         width: 100%;
         overflow-y: scroll;
         max-height: 200px;
-        box-shadow: 0 5px 10px #e7e7e7;
+        box-shadow: var(--box-shadow);
 
         .base-select__item button {
             width: 100%;
             text-align: left;
-            //font-family: $font-hellobank;
-            color: var(--text-dark);
             font-size: 18px;
             padding: space(2);
             cursor: pointer;
             transition: all ease .3s;
-            border-bottom: 1px solid #f3f3f3;
+            border-bottom: var(--border-grey);
+            @include typography(paragraph);
         }
 
         .base-select__item.base-select__item--pre-select button,
         .base-select__item button:hover {
-            //font-family: $font-hellobank-bold;
-            background: #f3f3f3;
+            background: var(--background);
         }
     }
 }
